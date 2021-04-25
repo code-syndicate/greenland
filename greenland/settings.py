@@ -22,7 +22,7 @@ SECRET_KEY = 'krka--)2-7h#@21!1*11)0ezad0-inb^sm0j6ou1-57krroyh&'
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 ALLOWED_HOSTS = [
-    'greenlandier.heroku.com',
+    'greenlandier.herokuapp.com',
 
 ]
 
