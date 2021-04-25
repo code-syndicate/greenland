@@ -1,8 +1,8 @@
 # Text backup files
 *.bak
-/migrations
+
 /db.sqlite3
-*migrations
+
 /__pycache__
 
 # Database
