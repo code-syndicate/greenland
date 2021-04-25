@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel='stylesheet' href='/static/banking/w3.css'> -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel ='favicon' href = ''>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;600&display=swap" rel="stylesheet">
+  <script src="https://use.fontawesome.com/410b3c1648.js"></script>
+
+  <!-- // charts   -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Year', 'Capital', 'Stock Margin'],
+        ['2013', 1000, 400],
+        ['2014', 1170, 460],
+        ['2015', 660, 1120],
+        ['2016', 1030, 540],
+        ['2017', 1200, 300],
+        ['2018', 1000, 700],
+        ['2019', 1300, 2500],
+        ['2020', 1700, 2000],
+        // ['2021', 1300, ]
+      ]);
+
+      var options = {
+        title: 'Bank Capitalization Performance',
+        hAxis: { title: 'Year', titleTextStyle: { color: '#333' } },
+        vAxis: { minValue: 0 },
+
+      };
+
+      var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+  </script>
+
+
+  <script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Week Day', 'v1', 'v2', 'v3', 'v4'],
+        ['Mon', 56, 56, 78, 78],
+        ['Tue', 38, 38, 55, 55],
+        ['Wed', 55, 55, 77, 77],
+        ['Thu', 27, 77, 66, 66],
+        ['Fri', 66, 66, 22, 22]
+        // Treat the first row as data.
+      ], false);
+
+      var options = {
+        title: 'Asset and Liabilties Swap(Previous Week)',
+        bar: { groupWidth: '100%' }, // Remove space between bars.
+        candlestick: {
+          fallingColor: { strokeWidth: 0, fill: '#a52714' }, // red
+          risingColor: { strokeWidth: 0, fill: '#0f9d58' }   // green
+        }
+      };
+
+      var chart = new google.visualization.CandlestickChart(document.getElementById('chart_div1'));
+      chart.draw(data, options);
+    }
+  </script>
+
+
+  <title> Majestic Bank | Dashboard </title>
+</head>
+
+<body>
+  <!-- // Message modal  -->
+
+  {% if msg %}
+  <!-- The Modal -->
+  <div id="id01" style="display: block;" class="w3-modal">
+    <div class="w3-modal-content">
+      <div style="background-color: {{color}};" class="w3-container ">
+        <span onclick="document.getElementById('id01').style.display='none'"
+          class="w3-button w3-display-topright">&times;</span>
+        <p class="w3-padding" style="color: {% if text_color %}{{text_color}}{% else %} grey {% endif %};font-weight: bold;"> {{ msg }} </p>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- ------ -->
+
+  <!-- Top container -->
+  <div class="w3-bar w3-top w3-xlarge" style="z-index:4;background-color: rgb(170, 211, 230);">
+    <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey"
+        onclick="w3_open();"><i class="fa fa-bars"></i> Menu </button>
+
+    <img src="/static/banking/images/favicon.ico" class="w3-right" style="background-color: rgb(197, 237, 238);color:rgba(96, 104, 80, 0.794)">
+    <span style="font-weight: bolder;" class="w3-bar-item w3-right w3-text-green w3-large w3-hide-small">
+
+        Dashboard </span>
+</div>
+
+
+  <!-- Sidebar/menu -->
+  <nav class="w3-sidebar w3-collapse  w3-animate-left"
+    style="z-index:3;width:300px;background-color: rgba(209, 209, 209, 0.822);color:rgb(0, 80, 100)" id="mySidebar"><br>
+    <div class="w3-container w3-row">
+      <div class="w3-col s6">
+        <img src="https://eu.ui-avatars.com/api/?name={{request.user.firstname}}+{{request.user.lastname}}"
+          class="w3-circle w3-left w3-margin-right w3-margin-bottom w3-padding w3-center " style="display: block;"
+          width="120px" height="120px">
+      </div>
+      <div class="w3-col s6 w3-bar">
+        <span style="display: inline-block; padding-top: 50px;"> Hello,<strong>
+            {{ request.user.firstname }}
+
+          </strong></span><br>
+        <!--- <a href="#" class="w3-bar-item w3-button"><i class="fa fa-bell"></i></a>
+              <a href="/user/dashboard/" title="Dashboard" class="w3-bar-item w3-button"><i
+                      class="fa fa-dashboard"></i></a>
+              <a href="/" title="Homepage" class="w3-bar-item w3-button"><i class="fa fa-home"></i></a>
+              -->
+
+
+      </div>
+    </div>
+
+
+
+    <a style="font-weight:bolder;font-family: Raleway" href="#" class="w3-bar-item w3-button w3-padding">
+      Acct No. : {{request.user.bank_account.encoded_account_number }} </a>
+    <a style="font-weight: bolder;font-family: Raleway" href="#" class="w3-bar-item w3-button w3-padding"> Balance :
+      &dollar; {{request.user.bank_account.balance }} </a>
+
+
+
+    <div class="w3-container w3-border-top w3-border-black">
+      <h5 style="font-weight: bolder;"> Dashboard </h5>
+    </div>
+    <div class="w3-bar-block ">
+      <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black"
+        onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i> Close </a>
+
+      <a href="/dashboard/" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user-circle fa-fw"></i> 
+        {{request.user.get_full_name}} </a>
+
+      <a href="/dashboard/" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw"></i>
+        {{request.user.email | truncatechars:12 }} </a>
+
+      <a href="/" class="w3-bar-item w3-button w3-padding"><i class="fa fa-map-marker fa-fw"></i>
+        {{request.user.state}} </a>
+
+      <a href="/" class="w3-bar-item w3-button w3-padding"><i class="fa fa-flag fa-fw"></i> 
+        {{request.user.country}} </a>
+
+      <!-- <p style="font-weight: bolder;" class="w3-large w3-bar-item"> Transfer  <i class="fa fa-send-o"></i></p> -->
+      <br>
+
+      <a style="font-weight: bolder;text-decoration: none;font-family:Raleway;" class="w3-large w3-bar-item"
+        onclick="switchList()" {% block transfer %} href="/transfer" {% endblock transfer %}
+        class="w3-bar-item w3-button w3-padding w3-text-blue-gray"><i class="fa fa-send fa-fw"></i> 
+        Transfer <i id="caret_" class="fa fa-caret-down fa-2x fa-fw w3-right"></i>  </a>
+
+      <div style="display: none;" id="tlist" class="w3-container w3-bar w3-margin-left w3-animate-right">
+        <a onclick="switchToLocal()" class="w3-bar-item w3-text-blue w3-hover-aqua"> Local Transfer </a>
+        <a onclick="switchToIntl()" class="w3-bar-item w3-text-blue w3-hover-aqua"> International Transfer </a>
+        <a href="/history/" class="w3-bar-item w3-button w3-padding w3-text-blue w3-hover-aqua ">
+          Transfer History </a>
+      </div>
+
+
+    </div>
+  </nav>
+
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
+    title="close side menu" id="myOverlay"></div>
+  <!-- ---------- -->
+
+  <div class="w3-main w3-row" style="margin-left:300px;margin-top:43px;">
+
+    <div class="main w3-col l12  w3-center  w3-round-medium">
+
+      <div style='width:100%;' class="top-container w3-border w3-padding ">
+        <form method = 'post' action="/search/">
+          {% csrf_token %}
+        <input class='w3-hide-small w3-hide-medium'
+          style='width:70%;margin-top:.5%;float:left;height:40px;border:1px solid transparent;border-radius:10px;padding:2%;background-color: rgba(0,0,0,0.1);'
+          type='text' placeholder='Search transaction history' name='query' />
+          <input type = 'submit' style = 'display:none;' value = 'submit' >
+          </form>
+
+        <div style='display:inline-block;'>
+
+          <img style='display:inline-block;margin:auto;border:1px solid transparent;' src='/static/banking/pic.jpg'
+            height='38' width='38' class='w3-circle w3-margin' alt='image'>
+
+          <span style='display:inline-block;text-align: center;font-weight: bold;text-transform: capitalize;'>
+            {{request.user.get_full_name}}</span>
+
+          &nbsp; <span style='display:inline-block;cursor:pointer' class='w3-tooltip hover-contain'> <i
+              class='w3-medium fas fa-angle-down '>
+              &nbsp; &nbsp;<a style='text-decoration:none;color:rgb(235, 6, 94);font-family: Arial;'
+                class='w3-animate-opacity w3-text w3-medium ' href='/log-out'> Log out </a>
+            </i></span>
+
+        </div>
+
+      </div>
+
+
+      <div style='background-color:rgba(0,0,0,0.1);' class="bottom-container w3-padding">
+        {% block main %}
+        <h1
+          style='text-align:left;font-size:2rem;letter-spacing:-1px;font-weight:bold;font-family: Arial, Helvetica, sans-serif;'>
+          Welcome back, {{request.user.firstname}} </h1>
+        <small style='padding:5px;text-align:center;float:left;display:inline-block;'
+          class='w3-tiny w3-tag w3-card-4 w3-round'> Your banking dashbaord</small>
+
+        <table style='margin-top:4%;' class='w3-table-all w3-centered'>
+          <tr>
+            <td
+              style='padding:4%;text-align:center;font-size: 1.25rem;font-weight: bolder;background-color: rgb(58, 115, 148);'>
+              <i style='color:rgb(255, 255, 255);' class='far fa-2x fa-calendar'></i>
+              <small class='w3-small w3-opacity'> Today </small>
+              <br>
+              <span style='color:rgb(255, 255, 255)'> {% now "jS \o\f F" %} </span>
+            </td>
+            <td
+              style='padding:4%;text-align:center;font-size: 1.25rem;font-weight: bolder;background-color: rgb(88, 148, 167);'>
+              <i style=' color:rgb(255, 255, 255)' class='fas fa-2x fa-credit-card'></i>
+              <small class='w3-small w3-opacity'> Balance </small>
+              <br>
+              <span style='color:rgb(255, 255, 255)'>
+                &dollar;{{ request.user.bank_account.balance }} </span>
+            </td>
+            <td
+              style='padding:4%;text-align:center;font-size: 1.25rem;font-weight: bolder;background-color: rgb(86, 149, 120);'>
+              <i style=' color:rgb(255, 255, 255)' class='fas fa-2x fa-bank'></i>
+              <small class='w3-small w3-opacity'> Account Number </small>
+              <br>
+              <span style='color:rgb(255, 255, 255)'>
+                {{request.user.bank_account.encoded_account_number }} </span>
+            </td>
+            <!-- <td  style = 'padding:4%;'> Junta </td> -->
+          </tr>
+
+
+        </table>
+
+        <div style='clear:both;padding:5px;' class="w3-row-padding w3-margin">
+          <div style='height:600px' id='chart_div' class='w3-half'>
+            <!-- Half1 {% lorem 4 p %} -->
+          </div>
+
+          <div style='height: 600px;' id='chart_div1' class="w3-half">
+            <!-- Half 2 {% lorem 4 p %} -->
+          </div>
+
+
+        </div>
+
+        <!-- <p style='clear:both;padding:5px;'>{% lorem 2 p %} </p> -->
+
+
+
+        {% endblock main %}
+
+        <br>
+        <div style='background-color: rgba(0, 0, 0, 0.212);' class="w3-container  w3-padding-32">
+          <div class="w3-row">
+            <div class="w3-container w3-third">
+              <h5 class="w3-bottombar w3-border-green"> Bank Support </h5>
+              <p> Code of Conduct </p>
+              <p> Information </p>
+              <p> Geographic Data </p>
+            </div>
+            <div class="w3-container w3-third">
+              <h5 class="w3-bottombar w3-border-red"> Terms </h5>
+              <p> Legal Policy </p>
+              <p> Data Policy </p>
+              <p> Terms and Conditions </p>
+            </div>
+            <div class="w3-container w3-third">
+              <h5 class="w3-bottombar w3-border-orange"> Affliates </h5>
+              <p> Internet Affliates </p>
+              <p> Marketing Affiates </p>
+              <p> Network Affliates </p>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer style='background-color: rgba(0, 0, 0, 0.513);' class="w3-container w3-padding-16 ">
+          <h4> Majestic Bank </h4>
+          <p> &copy <a href="" target="_blank"> {% now "Y" %} </a></p>
+        </footer>
+
+
+
+
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+  </div>
+
+
+
+  <script>
+    // Get the Sidebar
+    var mySidebar = document.getElementById("mySidebar");
+
+    // Get the DIV with overlay effect
+    var overlayBg = document.getElementById("myOverlay");
+
+    // Toggle between showing and hiding the sidebar, and add overlay effect
+    function w3_open() {
+        if (mySidebar.style.display === 'block') {
+            mySidebar.style.display = 'none';
+            overlayBg.style.display = "none";
+        } else {
+            mySidebar.style.display = 'block';
+            overlayBg.style.display = "block";
+        }
+    }
+
+    // Close the sidebar with the close button
+    function w3_close() {
+        mySidebar.style.display = "none";
+        overlayBg.style.display = "none";
+        // document.getElementById("caret_").cl
+    }
+
+
+
+    {% block script %}
+
+    {% endblock script %}
+</script>
+
+</body>
+
+</html>
