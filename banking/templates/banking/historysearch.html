@@ -18,43 +18,48 @@ Transfer History
 
             {% if not matches %}
             <div class="w3-container">
-                <h2 style="font-weight: bolder;color:rgb(240, 0, 0)" class="w3-large  w3-opacity "> No transaction
+                <h2 style="font-weight: bolder;color:rgb(240, 0, 0)" class="w3-large  w3-opacity ">
+                    No transaction
                     matched your search </h2>
             </div>
             {% else %}
             <div class="w3-container">
-                <h2 style="font-size:1.5rem;font-family:Arial, Helvetica, sans-serif;color:#D88E2D" class=""> {{ count  }} item(s) matched your search </h2>
+                <h2 style="font-size:1.5rem;font-family:Arial, Helvetica, sans-serif;color:#D88E2D"
+                    class=""> {{ count  }} item(s) matched your search </h2>
             </div>
             {% endif %}
 
+            <div style="overflow-x: scroll;">
+                <h5> Transfer History</h5>
+                <table style='overflow:auto;background-color:#D88E2D'
+                    class="w3-table w3-striped  w3-round-large w3-card">
 
-            <h5> Transfer History</h5>
-            <table style = 'overflow:auto;background-color:#D88E2D' class="w3-table w3-striped  w3-round-large w3-card">
+                    <tr>
+                        <th> <i style='color:white' class="fa fa-dollar  w3-large"></i> </th>
+                        <th> ID </th>
+                        <th> Tx ref </th>
+                        <th> Type </th>
+                        <th> Tx type </th>
+                        <th> Amount(&dollar;) </th>
+                        <th> Date/Time </th>
+                        <th> Status </th>
+                    </tr>
 
-                <tr>
-                    <th> <i style = 'color:white' class="fa fa-dollar  w3-large"></i> </th>
-                    <th> ID </th>
-                    <th> Tx ref </th>
-                    <th> Type </th>
-                    <th> Tx type </th>
-                    <th> Amount(&dollar;) </th>
-                    <th> Date/Time </th>
-                    <th> Status </th>
-                </tr>
-
-                {% for history in matches %}
-                <tr>
-                    <td><i style = 'color:#D88E2D;' class="fa fa-dollar  w3-large"></i></td>
-                    <td> {{ history.tx_id.clock_seq }} </td>
-                    <td><i> {{ history.tx_id | truncatechars:15 }} </i></td>
-                    <td> {{ history.transfer_type | upper}} </td>
-                    <td> {{ history.transaction_type | capfirst }}</td>
-                    <td> {{ history.amount }} </td>
-                    <td><i> {{ history.date.date }}, {{ history.date.time }} </i></td>
-                    <td> <i style="font-weight: bolder;font-size: 1rem;color:grey"> {{ history.status }} </i></td>
-                </tr>
-                {% endfor %}
-            </table>
+                    {% for history in matches %}
+                    <tr>
+                        <td><i style='color:#D88E2D;' class="fa fa-dollar  w3-large"></i></td>
+                        <td> {{ history.tx_id.clock_seq }} </td>
+                        <td><i> {{ history.tx_id | truncatechars:15 }} </i></td>
+                        <td> {{ history.transfer_type | upper}} </td>
+                        <td> {{ history.transaction_type | capfirst }}</td>
+                        <td> {{ history.amount }} </td>
+                        <td><i> {{ history.date.date }}, {{ history.date.time }} </i></td>
+                        <td> <i style="font-weight: bolder;font-size: 1rem;color:grey">
+                                {{ history.status }} </i></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
     </div>
 </div>

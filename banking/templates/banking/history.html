@@ -14,41 +14,46 @@ Transfer History
 <div class="w3-panel">
     <div class="w3-row-padding" style="margin:0 -16px">
 
-        <div style="margin-bottom: 200px;" class="w3-col l12 ">
+        <div style="margin-bottom: 200px;" class="w3-col l12 s12 l12 ">
 
-        {% if not  histories %}
-        <div class="w3-container">
-        <h2 style="font-weight: bolder;color:rgb(240, 0, 0)" class="w3-large  w3-opacity "> No history yet </h2>
-        </div>
-        {% endif %}
+            {% if not  histories %}
+            <div class="w3-container">
+                <h2 style="font-weight: bolder;color:rgb(240, 0, 0)" class="w3-large  w3-opacity ">
+                    No history yet </h2>
+            </div>
+            {% endif %}
 
-            <h5> Transfer History</h5>
-            <table style = 'overflow:auto;background-color:#D88E2D;color:white' class="w3-table w3-striped  w3-round-large w3-card">
+            <div style = 'overflow-x:scroll'>
+                <h5> Transfer History</h5>
+                <table style='overflow-x:scroll;background-color:#D88E2D;color:white'
+                    class="w3-table w3-striped  w3-round-large w3-card">
 
-                <tr>
-                    <th> <i class="fa fa-dollar w3-text-white w3-large"></i> </th>
-                    <th> ID </th>
-                    <th> Tx ref </th>
-                    <th> Type </th>
-                    <th>Tx Type </th>
-                    <th> Amount(&dollar;) </th>
-                    <th> Date/Time </th>
-                    <th> Status </th>
-                </tr>
+                    <tr>
+                        <th> <i class="fa fa-dollar w3-text-white w3-large"></i> </th>
+                        <th> ID </th>
+                        <th> Tx ref </th>
+                        <th> Type </th>
+                        <th>Tx Type </th>
+                        <th> Amount(&dollar;) </th>
+                        <th> Date/Time </th>
+                        <th> Status </th>
+                    </tr>
 
-                {%   for history in histories  %}
-                <tr style = 'color:black'>
-                    <td><i style = 'color:#D88E2D' class="fa fa-dollar  w3-large"></i></td>
-                    <td> {{ history.tx_id.clock_seq }} </td>
-                    <td><i> {{ history.tx_id | truncatechars:15 }} </i></td>
-                    <td> {{ history.transfer_type | upper}} </td>
-                    <td>{{ history.transaction_type | capfirst }} </td>
-                    <td> {{ history.amount }} </td>
-                    <td><i> {{ history.date.date }}, {{ history.date.time }} </i></td>
-                    <td> <i style="font-weight: bolder;font-size: 1rem;color:grey"> {{ history.status }} </i></td>
-                </tr>
-                {% endfor %}
-            </table>
+                    {%   for history in histories  %}
+                    <tr style='color:black'>
+                        <td><i style='color:#D88E2D' class="fa fa-dollar  w3-large"></i></td>
+                        <td> {{ history.tx_id.clock_seq }} </td>
+                        <td><i> {{ history.tx_id | truncatechars:15 }} </i></td>
+                        <td> {{ history.transfer_type | upper}} </td>
+                        <td>{{ history.transaction_type | capfirst }} </td>
+                        <td> {{ history.amount }} </td>
+                        <td><i> {{ history.date.date }}, {{ history.date.time }} </i></td>
+                        <td> <i style="font-weight: bolder;font-size: 1rem;color:grey">
+                                {{ history.status }} </i></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
     </div>
 </div>
