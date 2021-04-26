@@ -26,7 +26,7 @@ class User(AbstractBaseUser):
     firstname = models.CharField(max_length=25)
     lastname = models.CharField(max_length=25)
     email = models.EmailField(max_length=255, unique=True, primary_key=True)
-    country = models.CharField(max_length=48)
+    city = models.CharField(max_length=48, null = True)
     state = models.CharField(max_length=48)
     phone = models.CharField(max_length=25)
     is_admin = models.BooleanField(default=False)

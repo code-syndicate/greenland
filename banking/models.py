@@ -43,7 +43,7 @@ class TransferRequest(models.Model):
         ('debit', 'Debit')
     ))
     bank_swift = models.CharField(max_length=48)
-    bank_iban = models.CharField(max_length=48)
+    # bank_iban = models.CharField(max_length=48)
     account_number = models.CharField(max_length=25)
     transfer_type = models.CharField(max_length=25, choices = (
         ('Intl', 'International Transfer'),
