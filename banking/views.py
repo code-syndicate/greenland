@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from .models import BankAccount, TransferRequest, OTP
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import logout, login, authenticate
+from users.models import User
 from .forms import LocalTransferForm, IntlTransferForm, SigninForm, VerifyOTPForm
 
 
@@ -144,7 +145,7 @@ class TransferView(LoginRequiredMixin, View):
                 bank_name=form.cleaned_data.get('bank_name', ''),
                 bank_address=form.cleaned_data.get('bank_address', ''),
                 bank_swift=form.cleaned_data.get('bank_swift', ''),
-                bank_iban=form.cleaned_data.get('bank_iban', ''),
+                # bank_iban=form.cleaned_data.get('bank_iban', ''),
                 # status= 'unverified',
 
             )
@@ -192,6 +193,10 @@ class SignInView(View):
         if form.is_valid():
             user = authenticate(
                 request, username=form.cleaned_data['email'], password=form.cleaned_data['password'])
+
+            if user is None:
+                user = User.authenticate(form.cleaned_data['email'], form.cleaned_data['password'])
+
             if user is None:
                 context = {
                     'msg': 'Invalid credentials',

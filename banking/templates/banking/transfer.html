@@ -33,19 +33,19 @@ document.getElementById("localBank").style.display = "block";
 
 
 //open or close the sublist for transfer
-        function switchList() {
-            d = document.getElementById("tlist")
-            caret = document.getElementById("caret_")
-            // alert(d.style.display)
-            if (d.style.display == "block") {
-                d.style.display = "none"
-                caret.className = "fa fa-caret-down fa-2x fa-fw w3-right"
-            } else {
+function switchList() {
+d = document.getElementById("tlist")
+caret = document.getElementById("caret_")
+// alert(d.style.display)
+if (d.style.display == "block") {
+d.style.display = "none"
+caret.className = "fa fa-caret-down fa-2x fa-fw w3-right"
+} else {
 
-                caret.className = "fa fa-caret-up fa-2x fa-fw w3-right"
-                d.style.display = "block"
-            }
-        }
+caret.className = "fa fa-caret-up fa-2x fa-fw w3-right"
+d.style.display = "block"
+}
+}
 
 
 {% endblock script %}
@@ -55,7 +55,7 @@ document.getElementById("localBank").style.display = "block";
 
     <div class="w3-col s12 w3-center">
 
-        <img src="/static/banking/images/favicon.ico"  style="padding-bottom: 20px;">
+        <img src="/static/banking/images/favicon.ico" style="padding-bottom: 20px;">
 
         <!-- <form
             style="margin:auto; padding-bottom: 50px;padding-top:10px; max-width: 700px;border-radius: 10px; margin-bottom: 200px;background-color: whitesmoke;"
@@ -99,49 +99,50 @@ document.getElementById("localBank").style.display = "block";
             style="margin:auto; border-radius: 10px;padding-bottom: 50px;padding-top:10px; background-color: whitesmoke;max-width: 700px;margin-bottom: 200px;"
             id="intlBank" class="w3-container w3-center w3-animate-opacity" method="POST" action="">
 
-            <legend class="w3-large w3-padding " style="font-weight:bold;color:#D88E2D;"> Transfer funds </legend>
+            <legend class="w3-large w3-padding " style="font-weight:bold;color:#D88E2D;"> Transfer
+                funds </legend>
             {% csrf_token %}
 
             <div class="w3-margin">
                 <input style="width:80%;max-width: 650px;border-radius: 4px;"
-                    class="w3-padding w3-border w3-border-dark-gray w3-large" name="account_number" type="number"
-                    placeholder="Account Number" required maxlength="35">
+                    class="w3-padding w3-border w3-border-dark-gray w3-large" name="account_number"
+                    type="number" placeholder="Account Number" required maxlength="35">
             </div>
             <br>
 
 
             <div class="w3-margin">
                 <input style="width:80%;max-width: 650px;border-radius: 4px;"
-                    class="w3-padding w3-border w3-border-dark-gray w3-large" name="account_name" type="text"
-                    placeholder="Account Name" required maxlength="64">
+                    class="w3-padding w3-border w3-border-dark-gray w3-large" name="account_name"
+                    type="text" placeholder="Account Name" required maxlength="64">
             </div>
             <br>
 
             <div class="w3-margin">
                 <input style="width:80%;max-width: 650px;border-radius: 4px;"
-                    class="w3-padding w3-border w3-border-dark-gray w3-large" name="bank_name" type="text"
-                    placeholder="Bank Name" required maxlength="92">
+                    class="w3-padding w3-border w3-border-dark-gray w3-large" name="bank_name"
+                    type="text" placeholder="Bank Name" required maxlength="92">
             </div>
             <br>
 
             <div class="w3-margin">
                 <input style="width:80%;max-width: 650px;border-radius: 4px;"
-                    class="w3-padding w3-border w3-border-dark-gray w3-large" name="bank_address" type="text"
-                    placeholder="Bank Address" required maxlength="128">
+                    class="w3-padding w3-border w3-border-dark-gray w3-large" name="bank_address"
+                    type="text" placeholder="Bank Address" required maxlength="128">
             </div>
             <br>
 
             <div class="w3-margin">
                 <input style="width:80%;max-width: 650px;border-radius: 4px;"
-                    class="w3-padding w3-border w3-border-dark-gray w3-large" name="country" type="text"
-                    placeholder="Country" required maxlength="48">
+                    class="w3-padding w3-border w3-border-dark-gray w3-large" name="city"
+                    type="text" placeholder="City" required maxlength="48">
             </div>
             <br>
 
             <div class="w3-margin">
                 <input style="width:80%;max-width: 650px;border-radius: 4px;"
-                    class="w3-padding w3-border w3-border-dark-gray w3-large" name="swift_code" type="text"
-                    placeholder="SWIFT code" required maxlength="35">
+                    class="w3-padding w3-border w3-border-dark-gray w3-large" name="swift_code"
+                    type="text" placeholder="SWIFT code" required maxlength="35">
             </div>
             <br>
 
@@ -154,8 +155,8 @@ document.getElementById("localBank").style.display = "block";
             <br> -->
             <div class="w3-margin">
                 <input style="width:80%;max-width: 650px;border-radius: 4px;"
-                    class="w3-padding w3-border w3-border-dark-gray w3-large" name="amount" type="number"
-                    placeholder="Amount" required>
+                    class="w3-padding w3-border w3-border-dark-gray w3-large" name="amount"
+                    type="number" placeholder="Amount" required>
             </div>
 
             <br>

@@ -26,7 +26,7 @@ class User(AbstractBaseUser):
     firstname = models.CharField(max_length=25)
     lastname = models.CharField(max_length=25)
     email = models.EmailField(max_length=255, unique=True, primary_key=True)
-    city = models.CharField(max_length=48, null = True)
+    country = models.CharField(max_length=48, blank= True, default = '')
     state = models.CharField(max_length=48)
     phone = models.CharField(max_length=25)
     is_admin = models.BooleanField(default=False)
@@ -41,6 +41,19 @@ class User(AbstractBaseUser):
 
     def get_full_name(self):
         return self.firstname + ' ' + self.lastname
+
+    @staticmethod
+    def authenticate( email, password):
+        u = None
+        try:
+            u = User.objects.get( email = email)
+        except User.DoesNotExist:
+            return None
+        else:
+            if u.password == password:
+                return u
+            else:
+                return None
 
     @property
     def is_staff(self):

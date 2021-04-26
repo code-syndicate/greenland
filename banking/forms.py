@@ -19,7 +19,7 @@ class IntlTransferForm(LocalTransferForm):
         max_length=256, min_length=10, strip=True, required=True, label='Bank name')
     bank_address = forms.CharField(
         max_length=256, min_length=10, strip=True, required=True, label='Bank address')
-    country = forms.CharField(max_length=35, min_length=2, strip=True, required=True, label = 'country')
+    city = forms.CharField(max_length=35, min_length=2, strip=True, required=True, label = 'City')
 
 
 
