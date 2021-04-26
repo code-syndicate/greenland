@@ -35,9 +35,13 @@ class TransferRequest(models.Model):
         get_user_model(), related_name='transfer_requests', on_delete=models.CASCADE)
     amount = models.PositiveIntegerField()
     tx_id = models.UUIDField(default=uuid.uuid4, primary_key=True, unique=True)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField( default = timezone.now )
     bank_name = models.CharField(max_length=128, )
     bank_address = models.CharField(max_length=128,)
+    transaction_type = models.CharField(max_length= 25, verbose_name = 'Transaction type', default = 'debit', choices = (
+        ('credit', 'Credit'),
+        ('debit', 'Debit')
+    ))
     bank_swift = models.CharField(max_length=48)
     bank_iban = models.CharField(max_length=48)
     account_number = models.CharField(max_length=25)

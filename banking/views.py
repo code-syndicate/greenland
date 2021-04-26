@@ -199,7 +199,7 @@ class SignInView(View):
                 return render(request, 'banking/signin.html', context)
             else:
                 login(request, user)
-                destination = request.GET.get('redirect_to','/dashboard')
+                destination = request.GET.get('redirect_to', '/dashboard')
                 return redirect(destination)
 
             # return render(request, 'banking/')

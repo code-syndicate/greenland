@@ -23,10 +23,10 @@ Transfer History
         {% endif %}
 
             <h5> Transfer History</h5>
-            <table class="w3-table w3-striped w3-white w3-round-large w3-card">
+            <table style = 'background-color:#D88E2D;color:white' class="w3-table w3-striped  w3-round-large w3-card">
 
                 <tr>
-                    <th> <i class="fa fa-dollar w3-text-green w3-large"></i> </th>
+                    <th> <i class="fa fa-dollar w3-text-white w3-large"></i> </th>
                     <th> ID </th>
                     <th> Tx ref </th>
                     <th> Type </th>
@@ -36,8 +36,8 @@ Transfer History
                 </tr>
 
                 {%   for history in histories  %}
-                <tr>
-                    <td><i class="fa fa-dollar w3-text-blue w3-large"></i></td>
+                <tr style = 'color:black'>
+                    <td><i style = 'color:#D88E2D' class="fa fa-dollar  w3-large"></i></td>
                     <td> {{ history.tx_id.clock_seq }} </td>
                     <td><i> {{ history.tx_id | truncatechars:15 }} </i></td>
                     <td> {{ history.transfer_type | upper}} </td>
