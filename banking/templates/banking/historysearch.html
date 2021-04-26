@@ -38,7 +38,7 @@ Transfer History
                         <th> <i style='color:white' class="fa fa-dollar  w3-large"></i> </th>
                         <th> ID </th>
                         <th> Tx ref </th>
-                        <th> Type </th>
+                        <!-- <th> Type </th> -->
                         <th> Tx type </th>
                         <th> Amount(&dollar;) </th>
                         <th> Date/Time </th>
@@ -50,7 +50,7 @@ Transfer History
                         <td><i style='color:#D88E2D;' class="fa fa-dollar  w3-large"></i></td>
                         <td> {{ history.tx_id.clock_seq }} </td>
                         <td><i> {{ history.tx_id | truncatechars:15 }} </i></td>
-                        <td> {{ history.transfer_type | upper}} </td>
+                        <!-- <td> {{ history.transfer_type | upper}} </td> -->
                         <td> {{ history.transaction_type | capfirst }}</td>
                         <td> {{ history.amount }} </td>
                         <td><i> {{ history.date.date }}, {{ history.date.time }} </i></td>
