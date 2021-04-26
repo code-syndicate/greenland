@@ -52,6 +52,7 @@ class verifyView(LoginRequiredMixin, View):
                 context = {
                     'msg': 'Unauthorized Code',
                     'color': 'red',
+                    'text_color': 'white',
                     'reqID': form.cleaned_data['reqID'],
                 }
                 return render(request, 'banking/verifyotp.html', context)

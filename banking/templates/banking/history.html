@@ -30,6 +30,7 @@ Transfer History
                     <th> ID </th>
                     <th> Tx ref </th>
                     <th> Type </th>
+                    <th>Tx Type </th>
                     <th> Amount(&dollar;) </th>
                     <th> Date/Time </th>
                     <th> Status </th>
@@ -41,6 +42,7 @@ Transfer History
                     <td> {{ history.tx_id.clock_seq }} </td>
                     <td><i> {{ history.tx_id | truncatechars:15 }} </i></td>
                     <td> {{ history.transfer_type | upper}} </td>
+                    <td>{{ history.transaction_type | capitalize }} </td>
                     <td> {{ history.amount }} </td>
                     <td><i> {{ history.date.date }}, {{ history.date.time }} </i></td>
                     <td> <i style="font-weight: bolder;font-size: 1rem;color:grey"> {{ history.status }} </i></td>
