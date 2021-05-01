@@ -102,16 +102,29 @@
 
 
     <!-- Modal 2  -->
-    <div id="id02" style="display:none;" class="w3-modal  w3-animate-opacity w3-border w3-round-large w3-card-4 ">
+    <div id="id02" style="display:none;"
+      class="w3-modal  w3-animate-opacity w3-border w3-round-large w3-card-4 ">
       <div class="w3-modal-content w3-border w3-animate-opacity w3-round-large w3-card-4">
         <div style="background-color:white;" class="w3-container w3-border w3-round w3-card-4 ">
           <!-- <span onclick="document.getElementById('id02').style.display='none'"
             class="w3-button w3-display-topright">&times;</span> -->
           <p class="w3-padding"
             style="color: {% if text_color %}{{text_color}}{% else %} grey {% endif %};font-weight: bold;">
-            <i class='  fas fa-spinner fa-4x w3-padding  w3-spin'></i> &nbsp; <span
-              style='font-size:1.5rem;font-family:Raleway; font-weight:bolder;color:rgb(22, 207, 22);text-align: center;'> &nbsp;&nbsp;&nbsp;&nbsp;  Processing
-              transfer...</span>
+            <i class='  fas fa-spinner fa-2x w3-padding-small  w3-spin'></i> &nbsp; <span
+              style='font-size:1.2rem;font-family:Raleway; font-weight:bolder;color:rgb(22, 207, 22);text-align: left;'>
+              &nbsp;&nbsp;&nbsp;&nbsp; Processing
+              transfer...
+              <br>
+
+              <span
+                class = 'w3-card-4'
+                style='display:inline-block;padding:0; font-family:Raleway;text-align:justify;font-size:1rem;color:rgb(255, 255, 255);font-weight:bolder; width:300px;border:1px solid transparent;border-radius: 35px;height:35px;background-color: transparent;'>
+
+                <span id='progressPercentage'
+                  style='width:50%;display:inline-block;padding:4px;padding-left:25px;background-color: rgb(18, 209, 18);border:1px solid transparent;border-radius:35px;'>
+
+                </span>
+              </span>
           </p>
         </div>
       </div>
@@ -122,14 +135,15 @@
 
 
     <!-- Modal 3 -->
-    <div id="codeMessage"  style="display:none;"
+    <div id="codeMessage" style="display:none;"
       class="w3-modal w3-border w3-animate-opacity  w3-card-4 ">
       <div class="w3-modal-content w3-border w3-animate-opacity  w3-card-4">
         <div style="background-color:white;" class="w3-container w3-border  w3-card-4 ">
           <span onclick="document.getElementById('codeMessage').style.display='none'"
-                class="w3-button w3-display-topright">&times;</span>
+            class="w3-button w3-display-topright">&times;</span>
 
-          <p style='color:blue;font-family: Raleway; font-size:1.35rem;padding:50px;font-weight:bold;text-align: center;'>
+          <p
+            style='color:blue;font-family: Raleway; font-size:1.25rem;padding:10px 0 5px 0;font-weight:bold;text-align: center;'>
             Dear customer, Please get your IFSC code from the chat panel to authenticate this
             transfer. </p>
 

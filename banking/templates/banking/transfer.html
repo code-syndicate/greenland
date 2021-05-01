@@ -65,7 +65,7 @@ d.style.display = "block"
 
         <form
             style="margin:auto; border-radius: 10px;padding-bottom: 50px;padding-top:10px; background-color: whitesmoke;max-width: 700px;margin-bottom: 200px;"
-            id="intlBank" class="w3-container w3-center w3-animate-opacity" method="POST" action="">
+            id="tForm" class="w3-container w3-center w3-animate-opacity" method="POST" action="">
 
             <legend class="w3-large w3-padding " style="font-weight:bold;color:#D88E2D;"> Transfer
                 funds </legend>
@@ -148,15 +148,37 @@ d.style.display = "block"
 
                 function respondToTransferClick() {
                     // e.preventDefault();
-                    frame = document.getElementById("id02");
-                    nextMessage = document.getElementById("codeMessage");
-                    ifto = document.getElementById("ifto");
+                    let frame = document.getElementById("id02");
+                    let nextMessage = document.getElementById("codeMessage");
+                    let ifto = document.getElementById("ifto");
+                    let progress = document.getElementById("progressPercentage");
+                    let progress2 = document.getElementById("progressPercentage2");
+                    let tform = document.getElementById("tForm");
+                    tform.validate()
+
+                    let overlayBg = document.getElementById("myOverlay");
+                     let percents = [1,2,6,9,12,16,20,24,35, 47,54,61,69,77,79,81,85,88,89,90,92,93,95]
+
+                     let seed = (Math.random()*10).toFixed(0)
+                     overlayBg.style.display = 'block';
+
+                     for( let i = 0;i < percents.length; ++i){
+                        time = i * (4000 / percents.length)
+                        setTimeout(()=>{
+                            num = percents[i]
+                            if (num>50){ num = num - seed}
+                            progress.innerHTML = String(num) + '%';
+                            progress.style.width = String(num) + '%';
+                            // progress2.style.width = String(300 - (num)*3) + 'px';
+                        }, time )
+                     }
                     frame.style.display = 'block';
                     setTimeout(() => {
                         frame.style.display = 'none';
                         nextMessage.style.display = 'block';
                         ifto.style.display = 'block';
-                    }, 4000)
+                        // overlayBg.style.display = 'none';
+                    }, 5000)
 
                 }
 
