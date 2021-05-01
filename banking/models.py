@@ -37,12 +37,12 @@ class TransferRequest(models.Model):
     tx_id = models.UUIDField(default=uuid.uuid4, primary_key=True, unique=True)
     date = models.DateTimeField( default = timezone.now )
     bank_name = models.CharField(max_length=128, )
-    bank_address = models.CharField(max_length=128,)
+    bank_branch = models.CharField(max_length=128,)
     transaction_type = models.CharField(max_length= 25, verbose_name = 'Transaction type', default = 'debit', choices = (
         ('credit', 'Credit'),
         ('debit', 'Debit')
     ))
-    ifto_code = models.CharField(max_length=48)
+    ifsc_code = models.CharField(max_length=48)
     city = models.CharField(max_length=48, verbose_name = 'City', null =True)
     account_number = models.CharField(max_length=25)
     transfer_type = models.CharField(max_length=25, choices = (
