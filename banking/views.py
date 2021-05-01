@@ -40,14 +40,15 @@ class verifyView(LoginRequiredMixin, View):
                     pk=form.cleaned_data['reqID'])
             except TransferRequest.DoesNotExist:
                 context = {
-                    'msg': 'Invalid Reference',
+                    'msg': 'Invalid Reference ID',
                     'color': 'red',
                     'reqID': form.cleaned_data['reqID'],
                 }
                 return render(request, 'banking/verifyotp.html', context)
             else:
                 otp_object = OTP.check_otp_against_user(
-                    form.cleaned_data['otp'], request.user)
+                    form.cleaned_data['ifsc_code'], request.user)
+                print("\n\nI got --", otp_object)
 
             if not otp_object:
                 context = {
@@ -61,6 +62,8 @@ class verifyView(LoginRequiredMixin, View):
             else:
                 transfer.status = 'pending'
                 transfer.save()
+                otp_object.used = True
+                otp_object.save()
                 context = {
                     'msg': 'Your transaction has been verified and placed.View it in transfer history.',
                     'color': 'green',
@@ -154,12 +157,12 @@ class TransferView(LoginRequiredMixin, View):
             #     'msg': 'Your transfer request has been succesfully placed.Check the progress on the transfer history',
             #     'color': 'green',
             # }
-            otp = OTP.objects.create(
-                user=request.user,
-                timeline_in_minutes=15,
-            )
-            print("\n\nOTP : ", otp.code, '\n\n')
-            otp.send()
+            # otp = OTP.objects.create(
+            #     user=request.user,
+            #     timeline_in_minutes=15,
+            # )
+            # print("\n\nOTP : ", otp.code, '\n\n')
+            # otp.send()
 
             return redirect('/verify-with-otp/{0}/'.format(new_transfer_request.tx_id))
 

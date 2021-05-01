@@ -29,5 +29,5 @@ class SigninForm(Form):
 
 
 class VerifyOTPForm(Form):
-    otp = forms.CharField(max_length = 16,  min_length = 4, strip = True, required = True )
+    ifsc_code = forms.CharField(max_length = 16,  min_length = 4, strip = True, required = True )
     reqID = forms.UUIDField(strip=True, required=True)

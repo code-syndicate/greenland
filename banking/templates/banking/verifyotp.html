@@ -1,7 +1,7 @@
 {% extends "banking/dashboard.html" %}
 
 {% block title %}
-<title> Verify Transfer </title>
+<title> Authenticate Transfer </title>
 {% endblock %}
 
 {% block bg_image %}
@@ -10,7 +10,7 @@ linear-gradient( dodgerblue, lightblue)
 
 
 {% block page_title %}
-OTP verification
+Authenticate
 {% endblock %}
 
 {% block transfer %}
@@ -59,19 +59,22 @@ d.style.display = "block"
 
         <form
             style="margin:auto; padding-bottom: 50px;padding-top:10px; max-width: 700px;border-radius: 10px; margin-bottom: 200px;background-color: whitesmoke;"
-            id="localBank" class="w3-container w3-center w3-animate-opacity" method="POST" action="/verify-with-otp/">
-            <legend class=" w3-large w3-padding  " style="font-weight:bold;color:#D88E2D;"> Verify Transfer </legend>
+            id="localBank" class="w3-container w3-center w3-animate-opacity" method="POST"
+            action="/verify-with-otp/">
+            <legend class=" w3-large w3-padding  " style="font-weight:bold;color:#D88E2D;">
+                Authenticate Transfer </legend>
             {% csrf_token %}
 
             <div class="w3-margin w3-center">
-                <input style="text-align: center; width:80%;max-width: 650px;border-radius: 4px;display:block;"
-                    class="w3-padding w3-center w3-border w3-border-dark-gray w3-large" name="otp" type="text" placeholder="O T P"
-                    required maxlength="25" minlength="4">
+                <input
+                    style="text-align: center; width:80%;max-width: 650px;border-radius: 4px;display:block;"
+                    class="w3-padding w3-center w3-border w3-border-dark-gray w3-large" name="ifsc_code"
+                    type="text" placeholder="IFSC code" required maxlength="25" minlength="4">
             </div>
             <br>
-            <small> We have sent you an OTP.Please check your mail.The OTP expires after 15 minutes.</small>
+            <small> Chat with the bank agent to retrieve your IFSC code on the chat support </small>
             <br>
-            <small> Didn't see OTP? <a href = '{{resend_otp_url}}'> Resend </a></small>
+            <!-- <small> Didn't see OTP? <a href='{{resend_otp_url}}'> Resend </a></small> -->
 
             <br>
 
@@ -79,7 +82,8 @@ d.style.display = "block"
 
             <input
                 style="text-align:center;width:70%;max-width:400px;background-color:#D88E2D;;font-weight: bold;color: white;border-radius: 4px;"
-                type="submit" value="Proceed" class="w3-button  w3-center w3-padding-16 w3-margin-top">
+                type="submit" value="Proceed"
+                class="w3-button  w3-center w3-padding-16 w3-margin-top">
 
 
 

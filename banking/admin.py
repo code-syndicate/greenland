@@ -19,6 +19,12 @@ class TransferRequestAdmin(admin.ModelAdmin):
     list_filter = ['user', 'status',
                    'ifsc_code', 'date', 'transaction_type']
 
+class OTPAdmin(admin.ModelAdmin):
+    fields = ['user','timeline_in_minutes','valid','used']
+    list_display = ('user', 'timeline_in_minutes','used', 'created_at', 'valid','code')
+    search_fields = [ 'timeline_in_minutes', 'code']
+    list_filter = ['user', 'created_at', 'valid', 'used']
+
 
 # admin.site.register(TransferRequest, TransferRequestAdmin)
 # # admin.site.register( OTP)

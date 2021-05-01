@@ -73,21 +73,30 @@ class OTP(models.Model):
     code = models.CharField(max_length=8, default=generate_otp, unique=True)
     user = models.ForeignKey(
         get_user_model(), related_name='codes', on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+    created_at = models.DateTimeField( auto_now_add = True , editable=False)
     timeline_in_minutes = models.PositiveIntegerField(default=60)
     valid = models.BooleanField(default=True)
+    used = models.BooleanField(default=False)
+
+
+    class Meta:
+        verbose_name = 'IFSC Code'
+        verbose_name_plural  = 'IFSC Codes'
 
     def __str__(self):
-        return 'OTP to ' + self.user.email
+        return 'IFSC Code for ' + self.user.email
 
     @property
     def is_valid(self):
-        elapsed = (timezone.now() - self.created_at).total_seconds()
+        if not(self.valid):
+            return self.valid
+
+        elapsed = ( timezone.now() - self.created_at).total_seconds()
         valid = elapsed < (self.timeline_in_minutes * 60)
-        if not(self.valid == valid):
+        if not valid:
             self.valid = valid
             self.save()
-        return self.valid
+        return valid
 
     def send(self):
         if not self.valid:
@@ -102,11 +111,11 @@ class OTP(models.Model):
     def check_otp_against_user(otp,user):
         otp_obj = None
         try:
-            otp_obj = OTP.objects.get( code = otp)
+            otp_obj = OTP.objects.get( code = otp, user = user)
         except OTP.DoesNotExist:
             return None
         else:
-            if (otp_obj.user == user) and otp_obj.is_valid:
+            if otp_obj.is_valid and not(otp_obj.used):
                 return otp_obj
             else:
                 return False
