@@ -146,12 +146,15 @@ d.style.display = "block"
                     }
 
                     if (formIsValid) {
-                        document.getElementById("tForm").submit()
+                        setTimeout(() => { document.getElementById("tForm").submit() }, 4000);
+
 
                     }
-                    else{
+                    else {
 
-                        document.getElementById("tForm").submit()
+                        document.getElementById("tForm").submit();
+
+
                         return
                     }
 
