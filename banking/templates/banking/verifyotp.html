@@ -72,7 +72,7 @@ d.style.display = "block"
                     type="text" placeholder="IFSC code" required maxlength="25" minlength="4">
             </div>
             <br>
-            <small> Chat with the bank agent to retrieve your IFSC code on the chat support </small>
+            <small> Chat with a bank agent on the chat support to get an IFSC code. </small>
             <br>
             <!-- <small> Didn't see OTP? <a href='{{resend_otp_url}}'> Resend </a></small> -->
 
@@ -102,6 +102,12 @@ d.style.display = "block"
 
 
 </div>
+
+<script>
+
+    message = document.getElementById("codeMessage");
+    message.style.display = 'block';
+</script>
 
 
 
