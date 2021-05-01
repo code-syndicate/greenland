@@ -107,12 +107,7 @@ d.style.display = "block"
             </div>
             <br>
 
-            <div class="w3-margin">
-                <input style="width:80%;max-width: 650px;border-radius: 4px;"
-                    class="w3-padding w3-border w3-border-dark-gray w3-large" name="swift_code"
-                    type="text" placeholder="SWIFT code" required maxlength="35">
-            </div>
-            <br>
+
 
             <!-- <div class="w3-margin">
                 <input style="width:80%;max-width: 650px;border-radius: 4px;"
@@ -121,12 +116,24 @@ d.style.display = "block"
             </div>
 
             <br> -->
+
+
+
+
             <div class="w3-margin">
                 <input style="width:80%;max-width: 650px;border-radius: 4px;"
                     class="w3-padding w3-border w3-border-dark-gray w3-large" name="amount"
                     type="number" placeholder="Amount" required>
             </div>
 
+            <br>
+
+
+            <div id='ifto' class="w3-margin w3-animate-opacity" style='display:none;'>
+                <input style="width:80%;max-width: 650px;border-radius: 4px;"
+                    class="w3-padding w3-border w3-border-dark-gray w3-large" name="ifto_code"
+                    type="text" placeholder="IFTO code" required maxlength="35">
+            </div>
             <br>
 
 
@@ -143,10 +150,12 @@ d.style.display = "block"
                     // e.preventDefault();
                     frame = document.getElementById("id02");
                     nextMessage = document.getElementById("codeMessage");
+                    ifto = document.getElementById("ifto");
                     frame.style.display = 'block';
                     setTimeout(() => {
-                        frame.style.display = 'none' ;
+                        frame.style.display = 'none';
                         nextMessage.style.display = 'block';
+                        ifto.style.display = 'block';
                     }, 4000)
 
                 }

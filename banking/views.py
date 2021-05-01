@@ -144,7 +144,7 @@ class TransferView(LoginRequiredMixin, View):
                 transfer_type=request.POST.get('transfer_type'),
                 bank_name=form.cleaned_data.get('bank_name', ''),
                 bank_address=form.cleaned_data.get('bank_address', ''),
-                bank_swift=form.cleaned_data.get('bank_swift', ''),
+                ifto_code =form.cleaned_data.get('ifto_code', ''),
                 # bank_iban=form.cleaned_data.get('bank_iban', ''),
                 # status= 'unverified',
 

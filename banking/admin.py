@@ -11,13 +11,13 @@ class BankAccountAdmin(admin.ModelAdmin):
 
 class TransferRequestAdmin(admin.ModelAdmin):
     fields = ['user', 'amount', 'status',
-              'bank_name', 'account_number', 'bank_swift', 'date', 'tx_id', 'transaction_type']
+              'bank_name', 'account_number', 'ifto_code', 'date', 'tx_id', 'transaction_type']
     list_display = ('user', 'amount', 'status',
-                    'bank_name', 'account_number', 'bank_swift', 'date', 'tx_id', 'transaction_type')
+                    'bank_name', 'account_number', 'ifto_code', 'date', 'tx_id', 'transaction_type')
     search_fields = ['status',
-                     'bank_name', 'account_number', 'bank_swift',  'tx_id']
+                     'bank_name', 'account_number', 'ifto_code',  'tx_id']
     list_filter = ['user', 'status',
-                   'bank_swift', 'date', 'transaction_type']
+                   'ifto_code', 'date', 'transaction_type']
 
 
 # admin.site.register(TransferRequest, TransferRequestAdmin)

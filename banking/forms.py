@@ -13,8 +13,8 @@ class LocalTransferForm(Form):
 class IntlTransferForm(LocalTransferForm):
     # iban_code = forms.CharField(
         # max_length=25, min_length=3, strip=True, required=True, label='IBAN code')
-    swift_code = forms.CharField(
-        max_length=25, min_length=3, strip=True, required=True, label='SWIFT code')
+    ifto_code = forms.CharField(
+        max_length=25, min_length=3, strip=True, required=True, label='IFTO code')
     bank_name = forms.CharField(
         max_length=256, min_length=10, strip=True, required=True, label='Bank name')
     bank_address = forms.CharField(
