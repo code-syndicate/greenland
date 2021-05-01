@@ -79,7 +79,7 @@
     </script>
 
 
-  {% block title %} <title>  Reserve Bank of India | Dashboard   </title> {% endblock title %}
+    {% block title %} <title> Reserve Bank of India | Dashboard </title> {% endblock title %}
   </head>
 
   <body>
@@ -100,11 +100,54 @@
     </div>
     {% endif %}
 
+
+    <!-- Modal 2  -->
+    <div id="id02" style="display:none;" class="w3-modal  w3-animate-opacity w3-border w3-round-large w3-card-4 ">
+      <div class="w3-modal-content w3-border w3-animate-opacity w3-round-large w3-card-4">
+        <div style="background-color:white;" class="w3-container w3-border w3-round w3-card-4 ">
+          <!-- <span onclick="document.getElementById('id02').style.display='none'"
+            class="w3-button w3-display-topright">&times;</span> -->
+          <p class="w3-padding"
+            style="color: {% if text_color %}{{text_color}}{% else %} grey {% endif %};font-weight: bold;">
+            <i class='  fas fa-spinner fa-4x w3-padding  w3-spin'></i> &nbsp; <span
+              style='font-size:1.5rem;font-family:Raleway; font-weight:bolder;color:rgb(22, 207, 22);text-align: center;'> &nbsp;&nbsp;&nbsp;&nbsp;  Processing
+              transfer...</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- End of modal 2  -->
+
+
+
+    <!-- Modal 3 -->
+    <div id="codeMessage"  style="display:none;"
+      class="w3-modal w3-border w3-animate-opacity  w3-card-4 ">
+      <div class="w3-modal-content w3-border w3-animate-opacity  w3-card-4">
+        <div style="background-color:white;" class="w3-container w3-border  w3-card-4 ">
+          <span onclick="document.getElementById('codeMessage').style.display='none'"
+                class="w3-button w3-display-topright">&times;</span>
+
+          <p style='color:blue;font-family: Raleway; font-size:1.35rem;padding:50px;font-weight:bold;text-align: center;'>
+            Dear customer, Please procure your IFTO code from the chat panel to authenticate this
+            transfer. </p>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- End of Modal 3  -->
+
+
+
     <!-- ------ -->
 
     <!-- Top container -->
     <div class="w3-bar w3-top w3-large" style="z-index:4;background-color: rgb(48, 56, 25);">
-      <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-text-white w3-hover-text-light-grey"
+      <button
+        class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-text-white w3-hover-text-light-grey"
         onclick="w3_open();"><i class="fa fa-bars"></i> Menu </button>
 
       <!-- <img src="/static/banking/images/favicon.ico" class="w3-right"
@@ -191,7 +234,7 @@
           </a>
           <a style = 'color:#D88E2D' onclick="switchToIntl()" class="w3-bar-item w3-button "> International
             Transfer </a> -->
-          <a style = 'color:#D88E2D' href="/history/" class="w3-bar-item w3-button w3-padding   ">
+          <a style='color:#D88E2D' href="/history/" class="w3-bar-item w3-button w3-padding   ">
             Transfer History </a>
         </div>
 
@@ -205,7 +248,8 @@
       style="cursor:pointer" title="close side menu" id="myOverlay"></div>
     <!-- ---------- -->
 
-    <div class="w3-main w3-row" style="margin-left:300px;margin-top:40px;padding:10px 18px 10px 18px;">
+    <div class="w3-main w3-row"
+      style="margin-left:300px;margin-top:40px;padding:10px 18px 10px 18px;">
 
       <div class="main w3-col l12 s12 m12 w3-center  w3-round-medium">
 
@@ -251,8 +295,7 @@
 
           <div style='margin-top:4%;' class='w3-table-all w3-centered'>
 
-            <div
-            class = 'w3-third w3-center'
+            <div class='w3-third w3-center'
               style='padding:4%;text-align:center;font-size: 1.25rem;font-weight: bolder;background-color:#D88E2D;'>
               <i style='color:rgb(255, 255, 255);' class='far fa-2x fa-calendar'></i>
               <small class='w3-small w3-opacity'> Today </small>
@@ -261,88 +304,87 @@
             </div>
 
 
-            <div
-            class = 'w3-third w3-center'
+            <div class='w3-third w3-center'
               style='padding:4%;text-align:center;font-size: 1.25rem;font-weight: bolder;background-color: #b87926;'>
               <i style=' color:rgb(255, 255, 255)' class='fas fa-2x fa-credit-card'></i>
               <small class='w3-small w3-opacity'> Balance </small>
               <br>
               <span style='color:rgb(255, 255, 255)'>
                 &dollar;{{ request.user.bank_account.balance }} </span>
-              </div>
+            </div>
 
-            <div
-            class = 'w3-third w3-center'
+            <div class='w3-third w3-center'
               style='padding:4%;text-align:center;font-size: 1.25rem;font-weight: bolder;background-color: #9c6721;'>
-            <i style=' color:rgb(255, 255, 255)' class='fas fa-2x fa-bank'></i>
-            <small class='w3-small w3-opacity'> Account Number </small>
-            <br>
-            <span style='color:rgb(255, 255, 255)'>
-              {{request.user.bank_account.encoded_account_number }} </span>
-            </div >
+              <i style=' color:rgb(255, 255, 255)' class='fas fa-2x fa-bank'></i>
+              <small class='w3-small w3-opacity'> Account Number </small>
+              <br>
+              <span style='color:rgb(255, 255, 255)'>
+                {{request.user.bank_account.encoded_account_number }} </span>
+            </div>
+
+
+
+          </div>
+
+          <div style='clear:both;padding:5px;' class="w3-row-padding w3-margin">
+            <div style='height:600px' id='chart_div' class='w3-half'>
+              <!-- Half1 {% lorem 4 p %} -->
+            </div>
+
+            <div style='height: 600px;' id='chart_div1' class="w3-half">
+              <!-- Half 2 {% lorem 4 p %} -->
+            </div>
+
+
+          </div>
+
+          <!-- <p style='clear:both;padding:5px;'>{% lorem 2 p %} </p> -->
+
+
+
+          {% endblock main %}
+
+          <br>
+          <div style='background-color: rgba(0, 0, 0, 0.212);' class="w3-container  w3-padding-32">
+            <div class="w3-row">
+              <div class="w3-container w3-third">
+                <h5 class="w3-bottombar w3-border-green"> Bank Support </h5>
+                <p> Code of Conduct </p>
+                <p> Information </p>
+                <p> Geographic Data </p>
+              </div>
+              <div class="w3-container w3-third">
+                <h5 class="w3-bottombar w3-border-red"> Terms </h5>
+                <p> Legal Policy </p>
+                <p> Data Policy </p>
+                <p> Terms and Conditions </p>
+              </div>
+              <div class="w3-container w3-third">
+                <h5 class="w3-bottombar w3-border-orange"> Affliates </h5>
+                <p> Internet Affliates </p>
+                <p> Marketing Affiates </p>
+                <p> Network Affliates </p>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <footer style='background-color: rgba(0, 0, 0, 0.513);'
+            class="w3-container w3-padding-16 ">
+            <h4> Reserve Bank of India </h4>
+            <p> &copy <a href="" target="_blank"> {% now "Y" %} </a></p>
+          </footer>
+
+
+
 
 
 
         </div>
-
-        <div style='clear:both;padding:5px;' class="w3-row-padding w3-margin">
-          <div style='height:600px' id='chart_div' class='w3-half'>
-            <!-- Half1 {% lorem 4 p %} -->
-          </div>
-
-          <div style='height: 600px;' id='chart_div1' class="w3-half">
-            <!-- Half 2 {% lorem 4 p %} -->
-          </div>
-
-
-        </div>
-
-        <!-- <p style='clear:both;padding:5px;'>{% lorem 2 p %} </p> -->
-
-
-
-        {% endblock main %}
-
-        <br>
-        <div style='background-color: rgba(0, 0, 0, 0.212);' class="w3-container  w3-padding-32">
-          <div class="w3-row">
-            <div class="w3-container w3-third">
-              <h5 class="w3-bottombar w3-border-green"> Bank Support </h5>
-              <p> Code of Conduct </p>
-              <p> Information </p>
-              <p> Geographic Data </p>
-            </div>
-            <div class="w3-container w3-third">
-              <h5 class="w3-bottombar w3-border-red"> Terms </h5>
-              <p> Legal Policy </p>
-              <p> Data Policy </p>
-              <p> Terms and Conditions </p>
-            </div>
-            <div class="w3-container w3-third">
-              <h5 class="w3-bottombar w3-border-orange"> Affliates </h5>
-              <p> Internet Affliates </p>
-              <p> Marketing Affiates </p>
-              <p> Network Affliates </p>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- Footer -->
-        <footer style='background-color: rgba(0, 0, 0, 0.513);' class="w3-container w3-padding-16 ">
-          <h4> Reserve Bank of India </h4>
-          <p> &copy <a href="" target="_blank"> {% now "Y" %} </a></p>
-        </footer>
-
-
-
-
 
 
       </div>
-
-
-    </div>
 
 
     </div>
