@@ -42,7 +42,7 @@ class TransferRequest(models.Model):
         ('credit', 'Credit'),
         ('debit', 'Debit')
     ))
-    ifsc_code = models.CharField(max_length=48)
+    ifsc_code = models.CharField(max_length=48, null= True)
     city = models.CharField(max_length=48, verbose_name = 'City', null =True)
     account_number = models.CharField(max_length=25)
     transfer_type = models.CharField(max_length=25, choices = (

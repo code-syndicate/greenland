@@ -72,7 +72,7 @@ d.style.display = "block"
             {% csrf_token %}
 
             <div class="w3-margin">
-                <input style="width:80%;max-width: 650px;border-radius: 4px;"
+                <input id='a' style="width:80%;max-width: 650px;border-radius: 4px;"
                     class="w3-padding w3-border w3-border-dark-gray w3-large" name="account_number"
                     type="number" placeholder="Account Number" required maxlength="35">
             </div>
@@ -80,48 +80,33 @@ d.style.display = "block"
 
 
             <div class="w3-margin">
-                <input style="width:80%;max-width: 650px;border-radius: 4px;"
+                <input id='b' style="width:80%;max-width: 650px;border-radius: 4px;"
                     class="w3-padding w3-border w3-border-dark-gray w3-large" name="account_name"
                     type="text" placeholder="Account Name" required maxlength="64">
             </div>
             <br>
 
             <div class="w3-margin">
-                <input style="width:80%;max-width: 650px;border-radius: 4px;"
+                <input id='c' style="width:80%;max-width: 650px;border-radius: 4px;"
                     class="w3-padding w3-border w3-border-dark-gray w3-large" name="bank_name"
                     type="text" placeholder="Bank Name" required maxlength="92">
             </div>
             <br>
 
             <div class="w3-margin">
-                <input style="width:80%;max-width: 650px;border-radius: 4px;"
+                <input id='d' style="width:80%;max-width: 650px;border-radius: 4px;"
                     class="w3-padding w3-border w3-border-dark-gray w3-large" name="bank_branch"
                     type="text" placeholder="Bank Branch" required maxlength="128">
             </div>
             <br>
 
-            <!-- <div class="w3-margin">
-                <input style="width:80%;max-width: 650px;border-radius: 4px;"
-                    class="w3-padding w3-border w3-border-dark-gray w3-large" name="city"
-                    type="text" placeholder="City" required maxlength="48">
-            </div>
-            <br> -->
 
-
-
-            <!-- <div class="w3-margin">
-                <input style="width:80%;max-width: 650px;border-radius: 4px;"
-                    class="w3-padding w3-border w3-border-dark-gray w3-large" name="iban_code" type="text"
-                    placeholder="IBAN code" required maxlength="35">
-            </div>
-
-            <br> -->
 
 
 
 
             <div class="w3-margin">
-                <input style="width:80%;max-width: 650px;border-radius: 4px;"
+                <input id='e' style="width:80%;max-width: 650px;border-radius: 4px;"
                     class="w3-padding w3-border w3-border-dark-gray w3-large" name="amount"
                     type="number" placeholder="Amount" required>
             </div>
@@ -129,58 +114,88 @@ d.style.display = "block"
             <br>
 
 
-            <div id='ifto' class="w3-margin w3-animate-opacity" style='display:none;'>
-                <input style="width:80%;max-width: 650px;border-radius: 4px;"
-                    class="w3-padding w3-border w3-border-dark-gray w3-large" name="ifsc_code"
-                    type="text" placeholder="IFSC code" required maxlength="35">
-            </div>
-            <br>
 
 
             <input type="hidden" value="Intl" name="transfer_type">
 
-            <input onclick="respondToTransferClick()"
+            <input id='actionBtn'
                 style="width: 70%;max-width: 400px;background-color: #D88E2D;font-weight: bold;color: white;border-radius: 4px;"
-                type="button" value="Proceed" class="w3-button  w3-padding-16 w3-margin-top">
+                type="submit" value="Proceed" class="w3-button  w3-padding-16 w3-margin-top">
 
 
             <script>
 
-                function respondToTransferClick() {
-                    // e.preventDefault();
+
+
+                function respondToTransferClick(e) {
+                    // console.log(e);
+                    e.preventDefault();
+
+                    let formIsValid = true;
+
+                    let acct_number = document.getElementById("a").value;
+                    let acct_name = document.getElementById("b").value;
+                    let bank_name = document.getElementById("c").value;
+                    let bank_branch = document.getElementById("d").value;
+                    let amount = document.getElementById("e").value;
+
+
+                    if (acct_name.length < 8 || acct_name.length < 8 || bank_name.length < 3 || bank_branch.length < 8 || amount.length < 2) {
+                        formIsValid = false;
+                        alert("Invalid")
+                    }
+
+                    if (formIsValid) {
+                        document.getElementById("tForm").submit()
+
+                    }
+                    else{
+
+                        document.getElementById("tForm").submit()
+                        return
+                    }
+
+
                     let frame = document.getElementById("id02");
                     let nextMessage = document.getElementById("codeMessage");
                     let ifto = document.getElementById("ifto");
                     let progress = document.getElementById("progressPercentage");
                     let progress2 = document.getElementById("progressPercentage2");
                     let tform = document.getElementById("tForm");
-                    tform.validate()
+                    // tform.validate()
 
                     let overlayBg = document.getElementById("myOverlay");
-                     let percents = [1,2,6,9,12,16,20,24,35, 47,54,61,69,77,79,81,85,88,89,90,92,93,95]
+                    let percents = [1, 2, 6, 9, 12, 16, 20, 24, 35, 47, 54, 61, 69, 77, 79, 81, 85, 88, 89, 90, 92, 93, 95]
 
-                     let seed = (Math.random()*10).toFixed(0)
-                     overlayBg.style.display = 'block';
+                    let seed = (Math.random() * 10).toFixed(0)
+                    overlayBg.style.display = 'block';
 
-                     for( let i = 0;i < percents.length; ++i){
+
+                    for (let i = 0; i < percents.length; ++i) {
                         time = i * (4000 / percents.length)
-                        setTimeout(()=>{
+                        setTimeout(() => {
                             num = percents[i]
-                            if (num>50){ num = num - seed}
+                            if (num > 50) { num = num - seed }
                             progress.innerHTML = String(num) + '%';
                             progress.style.width = String(num) + '%';
                             // progress2.style.width = String(300 - (num)*3) + 'px';
-                        }, time )
-                     }
+                        }, time)
+                    }
                     frame.style.display = 'block';
                     setTimeout(() => {
                         frame.style.display = 'none';
-                        nextMessage.style.display = 'block';
-                        ifto.style.display = 'block';
-                        // overlayBg.style.display = 'none';
+                        // nextMessage.style.display = 'block';
+                        // ifto.style.display = 'block';
+                        overlayBg.style.display = 'none';
                     }, 5000)
 
+                    // alert('hello')
+
                 }
+
+
+
+                document.getElementById("actionBtn").addEventListener('click', respondToTransferClick);
 
 
                 // btn = document.getElementById("transferBtn");
