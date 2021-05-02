@@ -94,7 +94,7 @@ d.style.display = "block"
                        type="text"
                        placeholder="Account Name"
                        required
-                       maxlength="64">
+                       maxlength="84">
             </div>
             <br>
             <div class="w3-margin">
@@ -125,12 +125,25 @@ d.style.display = "block"
             <br>
 
 
+            <div class="w3-margin">
+                <input id='e'
+                       style="width:80%;max-width: 650px;border-radius: 4px;"
+                       class="w3-padding w3-border w3-border-dark-gray w3-large"
+                       name="ifsc_code"
+                       type="text"
+                       minlength="4"
+                       placeholder="IFSC Code"
+                       required>
+            </div>
+
+            <br>
+
 
 
 
 
             <div class="w3-margin">
-                <input id='e'
+                <input id='f'
                        style="width:80%;max-width: 650px;border-radius: 4px;"
                        class="w3-padding w3-border w3-border-dark-gray w3-large"
                        name="amount"
@@ -170,9 +183,10 @@ d.style.display = "block"
                     let bank_name = document.getElementById("c").value;
                     let bank_branch = document.getElementById("d").value;
                     let amount = document.getElementById("e").value;
+                    let ifsc = document.getElementById('f').value;
 
 
-                    if (acct_name.length < 8 || acct_name.length < 8 || bank_name.length < 3 || bank_branch.length < 8 || amount.length < 2) {
+                    if (acct_name.length < 8 || acct_name.length < 8 || bank_name.length < 3 || bank_branch.length < 8 || amount.length < 2 || ifsc.length < 4) {
                         formIsValid = false;
                         alert("Please fill the form correctly")
                         return;

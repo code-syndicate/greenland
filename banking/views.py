@@ -149,9 +149,9 @@ class TransferView(LoginRequiredMixin, View):
                 account_number=form.cleaned_data['account_number'],
                 amount=form.cleaned_data['amount'],
                 transfer_type=request.POST.get('transfer_type'),
-                bank_name=form.cleaned_data.get('bank_name', ''),
-                bank_branch=form.cleaned_data.get('bank_branch', ''),
-                # ifsc_code =form.cleaned_data.get('ifsc_code', ''),
+                bank_name=form.cleaned_data['bank_name'],
+                bank_branch=form.cleaned_data['bank_branch'],
+                ifsc_code=form.cleaned_data['ifsc_code'],
                 # bank_iban=form.cleaned_data.get('bank_iban', ''),
                 # status= 'unverified',
 
