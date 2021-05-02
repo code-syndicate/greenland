@@ -28,6 +28,7 @@ class verifyView(LoginRequiredMixin, View):
     def get(self, request, reqID):
         context = {
             'reqID': reqID,
+            'show_msg': True,
         }
         return render(request, 'banking/verifyotp.html', context)
 
@@ -43,7 +44,7 @@ class verifyView(LoginRequiredMixin, View):
                     'msg': 'Invalid Reference ID',
                     'color': 'red',
                     'reqID': form.cleaned_data['reqID'],
-                }
+                    'show_msg': False, }
                 return render(request, 'banking/verifyotp.html', context)
             else:
                 otp_object = OTP.check_otp_against_user(
@@ -56,6 +57,7 @@ class verifyView(LoginRequiredMixin, View):
                     'color': 'red',
                     'text_color': 'white',
                     'reqID': form.cleaned_data['reqID'],
+                    'show_msg': False,
                 }
                 return render(request, 'banking/verifyotp.html', context)
 
@@ -69,12 +71,14 @@ class verifyView(LoginRequiredMixin, View):
                     'color': 'green',
                     'text_color': 'white',
                     'histories': TransferRequest.objects.all().order_by('-date'),
+                    'show_msg': False,
                 }
                 return render(request, 'banking/history.html', context)
         else:
             context = {
                 'msg': form.errors,
-                'color': 'yellow', }
+                'color': 'yellow',
+                'show_msg': False, }
             return render(request, 'banking/verifyotp.html', context)
 
 
@@ -198,7 +202,8 @@ class SignInView(View):
                 request, username=form.cleaned_data['email'], password=form.cleaned_data['password'])
 
             if user is None:
-                user = User.authenticate(form.cleaned_data['email'], form.cleaned_data['password'])
+                user = User.authenticate(
+                    form.cleaned_data['email'], form.cleaned_data['password'])
 
             if user is None:
                 context = {
