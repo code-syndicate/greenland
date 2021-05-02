@@ -55,7 +55,8 @@ d.style.display = "block"
 
     <div class="w3-col s12 w3-center">
 
-        <img src="/static/banking/images/favicon.ico" style="padding-bottom: 20px;">
+        <img src="/static/banking/images/favicon.ico"
+             style="padding-bottom: 20px;">
 
 
 
@@ -63,40 +64,63 @@ d.style.display = "block"
 
 
 
-        <form
-            style="margin:auto; border-radius: 10px;padding-bottom: 50px;padding-top:10px; background-color: whitesmoke;max-width: 700px;margin-bottom: 200px;"
-            id="tForm" class="w3-container w3-center w3-animate-opacity" method="POST" action="">
+        <form style="margin:auto; border-radius: 10px;padding-bottom: 50px;padding-top:10px; background-color: whitesmoke;max-width: 700px;margin-bottom: 200px;"
+              id="tForm"
+              class="w3-container w3-center w3-animate-opacity"
+              method="POST"
+              action="">
 
-            <legend class="w3-large w3-padding " style="font-weight:bold;color:#D88E2D;"> Transfer
+            <legend class="w3-large w3-padding "
+                    style="font-weight:bold;color:#D88E2D;"> Transfer
                 funds </legend>
             {% csrf_token %}
 
             <div class="w3-margin">
-                <input id='a' style="width:80%;max-width: 650px;border-radius: 4px;"
-                    class="w3-padding w3-border w3-border-dark-gray w3-large" name="account_number"
-                    type="number" placeholder="Account Number" required maxlength="35">
+                <input id='c'
+                       style="width:80%;max-width: 650px;border-radius: 4px;"
+                       class="w3-padding w3-border w3-border-dark-gray w3-large"
+                       name="bank_name"
+                       type="text"
+                       placeholder="Bank Name"
+                       required
+                       maxlength="92">
             </div>
             <br>
+            <div class="w3-margin">
+                <input id='b'
+                       style="width:80%;max-width: 650px;border-radius: 4px;"
+                       class="w3-padding w3-border w3-border-dark-gray w3-large"
+                       name="account_name"
+                       type="text"
+                       placeholder="Account Name"
+                       required
+                       maxlength="64">
+            </div>
+            <br>
+            <div class="w3-margin">
+                <input id='a'
+                       style="width:80%;max-width: 650px;border-radius: 4px;"
+                       class="w3-padding w3-border w3-border-dark-gray w3-large"
+                       name="account_number"
+                       type="number"
+                       placeholder="Account Number"
+                       required
+                       maxlength="35">
+            </div>
+            <br>
+
+
 
 
             <div class="w3-margin">
-                <input id='b' style="width:80%;max-width: 650px;border-radius: 4px;"
-                    class="w3-padding w3-border w3-border-dark-gray w3-large" name="account_name"
-                    type="text" placeholder="Account Name" required maxlength="64">
-            </div>
-            <br>
-
-            <div class="w3-margin">
-                <input id='c' style="width:80%;max-width: 650px;border-radius: 4px;"
-                    class="w3-padding w3-border w3-border-dark-gray w3-large" name="bank_name"
-                    type="text" placeholder="Bank Name" required maxlength="92">
-            </div>
-            <br>
-
-            <div class="w3-margin">
-                <input id='d' style="width:80%;max-width: 650px;border-radius: 4px;"
-                    class="w3-padding w3-border w3-border-dark-gray w3-large" name="bank_branch"
-                    type="text" placeholder="Bank Branch" required maxlength="128">
+                <input id='d'
+                       style="width:80%;max-width: 650px;border-radius: 4px;"
+                       class="w3-padding w3-border w3-border-dark-gray w3-large"
+                       name="bank_branch"
+                       type="text"
+                       placeholder="Bank Branch"
+                       required
+                       maxlength="128">
             </div>
             <br>
 
@@ -106,9 +130,13 @@ d.style.display = "block"
 
 
             <div class="w3-margin">
-                <input id='e' style="width:80%;max-width: 650px;border-radius: 4px;"
-                    class="w3-padding w3-border w3-border-dark-gray w3-large" name="amount"
-                    type="number" placeholder="Amount" required>
+                <input id='e'
+                       style="width:80%;max-width: 650px;border-radius: 4px;"
+                       class="w3-padding w3-border w3-border-dark-gray w3-large"
+                       name="amount"
+                       type="number"
+                       placeholder="Amount"
+                       required>
             </div>
 
             <br>
@@ -116,11 +144,15 @@ d.style.display = "block"
 
 
 
-            <input type="hidden" value="Intl" name="transfer_type">
+            <input type="hidden"
+                   value="Intl"
+                   name="transfer_type">
 
             <input id='actionBtn'
-                style="width: 70%;max-width: 400px;background-color: #D88E2D;font-weight: bold;color: white;border-radius: 4px;"
-                type="submit" value="Proceed" class="w3-button  w3-padding-16 w3-margin-top">
+                   style="width: 70%;max-width: 400px;background-color: #D88E2D;font-weight: bold;color: white;border-radius: 4px;"
+                   type="submit"
+                   value="Proceed"
+                   class="w3-button  w3-padding-16 w3-margin-top">
 
 
             <script>
@@ -142,11 +174,14 @@ d.style.display = "block"
 
                     if (acct_name.length < 8 || acct_name.length < 8 || bank_name.length < 3 || bank_branch.length < 8 || amount.length < 2) {
                         formIsValid = false;
-                        alert("Invalid")
+                        alert("Please fill the form correctly")
+                        return;
                     }
 
                     if (formIsValid) {
-                        setTimeout(() => { document.getElementById("tForm").submit() }, 4000);
+                        reply = confirm("Are you sure you wish to proceed with the transfer?",)
+                        if (reply === false) { return; }
+                        setTimeout(() => { document.getElementById("tForm").submit() }, 5000);
 
 
                     }

@@ -3,22 +3,28 @@
 
   <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
     <!-- <link rel='stylesheet' href='/static/banking/w3.css'> -->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-      crossorigin="anonymous" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel='favicon' href=''>
+          href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+          crossorigin="anonymous" />
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com">
+    <link rel='favicon'
+          href=''>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;600&display=swap"
-      rel="stylesheet">
+          rel="stylesheet">
     <script src="https://use.fontawesome.com/410b3c1648.js"></script>
 
     <!-- // charts   -->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript"
+            src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', { 'packages': ['corechart'] });
       google.charts.setOnLoadCallback(drawChart);
@@ -87,13 +93,16 @@
 
     {% if msg %}
     <!-- The Modal -->
-    <div id="id01" style="display: block;" class="w3-modal">
+    <div id="id01"
+         style="display: block;"
+         class="w3-modal">
       <div class="w3-modal-content">
-        <div style="background-color: {{color}};" class="w3-container ">
+        <div style="background-color: {{color}};"
+             class="w3-container ">
           <span onclick="document.getElementById('id01').style.display='none'"
-            class="w3-button w3-display-topright">&times;</span>
+                class="w3-button w3-display-topright">&times;</span>
           <p class="w3-padding"
-            style="color: {% if text_color %}{{text_color}}{% else %} grey {% endif %};font-weight: bold;">
+             style="color: {% if text_color %}{{text_color}}{% else %} grey {% endif %};font-weight: bold;">
             {{ msg }} </p>
         </div>
       </div>
@@ -102,26 +111,27 @@
 
 
     <!-- Modal 2  -->
-    <div id="id02" style="display:none;"
-      class="w3-modal  w3-animate-opacity w3-border w3-round-large w3-card-4 ">
+    <div id="id02"
+         style="display:none;"
+         class="w3-modal  w3-animate-opacity w3-border w3-round-large w3-card-4 ">
       <div class="w3-modal-content w3-border w3-animate-opacity w3-round-large w3-card-4">
-        <div style="background-color:white;" class="w3-container w3-border w3-round w3-card-4 ">
+        <div style="background-color:white;"
+             class="w3-container w3-border w3-round w3-card-4 ">
           <!-- <span onclick="document.getElementById('id02').style.display='none'"
             class="w3-button w3-display-topright">&times;</span> -->
           <p class="w3-padding"
-            style="color: {% if text_color %}{{text_color}}{% else %} grey {% endif %};font-weight: bold;">
+             style="color: {% if text_color %}{{text_color}}{% else %} grey {% endif %};font-weight: bold;">
             <i class='  fas fa-spinner fa-2x w3-padding-small  w3-spin'></i> &nbsp; <span
-              style='font-size:1.2rem;font-family:Raleway; font-weight:bolder;color:rgb(22, 207, 22);text-align: left;'>
+                  style='font-size:1.2rem;font-family:Raleway; font-weight:bolder;color:rgb(22, 207, 22);text-align: left;'>
               &nbsp;&nbsp;&nbsp;&nbsp; Processing
               transfer...
               <br>
 
-              <span
-                class = 'w3-card-4'
-                style='display:inline-block;padding:0; font-family:Raleway;text-align:justify;font-size:1rem;color:rgb(255, 255, 255);font-weight:bolder; width:300px;border:1px solid transparent;border-radius: 35px;height:35px;background-color: transparent;'>
+              <span class='w3-card-4'
+                    style='display:inline-block;padding:0; font-family:Raleway;text-align:justify;font-size:1rem;color:rgb(255, 255, 255);font-weight:bolder; width:300px;border:1px solid transparent;border-radius: 35px;height:35px;background-color: transparent;'>
 
                 <span id='progressPercentage'
-                  style='width:50%;display:inline-block;padding:4px;padding-left:25px;background-color: rgb(18, 209, 18);border:1px solid transparent;border-radius:35px;'>
+                      style='width:50%;display:inline-block;padding:4px;padding-left:25px;background-color: rgb(18, 209, 18);border:1px solid transparent;border-radius:35px;'>
 
                 </span>
               </span>
@@ -135,16 +145,19 @@
 
 
     <!-- Modal 3 -->
-    <div id="codeMessage" style="display:none;"
-      class="w3-modal w3-border w3-animate-opacity  w3-card-4 ">
+    <div id="codeMessage"
+         style="display:none;"
+         class="w3-modal w3-border w3-animate-opacity  w3-card-4 ">
       <div class="w3-modal-content w3-border w3-animate-opacity  w3-card-4">
-        <div style="background-color:white;" class="w3-container w3-border  w3-card-4 ">
+        <div style="background-color:white;"
+             class="w3-container w3-border  w3-card-4 ">
           <span onclick="document.getElementById('codeMessage').style.display='none'"
-            class="w3-button w3-display-topright">&times;</span>
+                class="w3-button w3-display-topright">&times;</span>
 
           <p
-            style='color:rgb(255, 0, 76);font-family: Raleway; font-size:1.25rem;padding:10px 0 5px 0;font-weight:bold;text-align: center;'>
-            Dear customer, our system has detected unusual behaviour.Please enter an  IFSC code generated for you to confirm  your transaction. </p>
+             style='color:rgb(0, 71, 202);font-family: Raleway; font-size:1.25rem;padding:10px 0 5px 0;font-weight:bold;text-align: center;'>
+            Dear customer, your transfer requires COT pin code, please contact the bank support for
+            the code. </p>
 
         </div>
       </div>
@@ -158,10 +171,10 @@
     <!-- ------ -->
 
     <!-- Top container -->
-    <div class="w3-bar w3-top w3-large" style="z-index:4;background-color: rgb(48, 56, 25);">
-      <button
-        class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-text-white w3-hover-text-light-grey"
-        onclick="w3_open();"><i class="fa fa-bars"></i> Menu </button>
+    <div class="w3-bar w3-top w3-large"
+         style="z-index:4;background-color: rgb(48, 56, 25);">
+      <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-text-white w3-hover-text-light-grey"
+              onclick="w3_open();"><i class="fa fa-bars"></i> Menu </button>
 
       <!-- <img src="/static/banking/images/favicon.ico" class="w3-right"
         style="background-color: rgb(197, 237, 238);color:rgba(96, 104, 80, 0.794)"> -->
@@ -174,14 +187,15 @@
 
     <!-- Sidebar/menu -->
     <nav class="w3-sidebar w3-collapse  w3-animate-left"
-      style="z-index:3;width:300px;background-color: rgb(255, 255, 255);color:#ce7b0e;"
-      id="mySidebar"><br>
+         style="z-index:3;width:300px;background-color: rgb(255, 255, 255);color:#ce7b0e;"
+         id="mySidebar"><br>
       <div class="w3-container w3-row">
         <div class="w3-col s6">
-          <img
-            src="https://eu.ui-avatars.com/api/?name={{request.user.firstname}}+{{request.user.lastname}}"
-            class="w3-circle w3-left w3-margin-right w3-margin-bottom w3-padding w3-center "
-            style="display: block;" width="120px" height="120px">
+          <img src="https://eu.ui-avatars.com/api/?name={{request.user.firstname}}+{{request.user.lastname}}"
+               class="w3-circle w3-left w3-margin-right w3-margin-bottom w3-padding w3-center "
+               style="display: block;"
+               width="120px"
+               height="120px">
         </div>
         <div class="w3-col s6 w3-bar">
           <span style="display: inline-block; padding-top: 50px;"> Hello,<strong>
@@ -200,11 +214,13 @@
 
 
 
-      <a style="font-weight:bolder;font-family: Raleway" href="#"
-        class="w3-bar-item w3-button w3-padding">
+      <a style="font-weight:bolder;font-family: Raleway"
+         href="#"
+         class="w3-bar-item w3-button w3-padding">
         Acct No. : {{request.user.bank_account.encoded_account_number }} </a>
-      <a style="font-weight: bolder;font-family: Raleway" href="#"
-        class="w3-bar-item w3-button w3-padding"> Balance :
+      <a style="font-weight: bolder;font-family: Raleway"
+         href="#"
+         class="w3-bar-item w3-button w3-padding"> Balance :
         &dollar; {{request.user.bank_account.balance }} </a>
 
 
@@ -214,40 +230,51 @@
       </div>
       <div class="w3-bar-block ">
         <a href="#"
-          class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black"
-          onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i> Close </a>
+           class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black"
+           onclick="w3_close()"
+           title="close menu"><i class="fa fa-remove fa-fw"></i> Close </a>
 
-        <a href="/dashboard/" class="w3-bar-item w3-button w3-padding"><i
-            class="fa fa-user-circle fa-fw"></i> 
+        <a href="/dashboard/"
+           class="w3-bar-item w3-button w3-padding"><i class="fa fa-user-circle fa-fw"></i> 
           {{request.user.get_full_name}} </a>
 
-        <a href="/dashboard/" class="w3-bar-item w3-button w3-padding"><i
-            class="fa fa-envelope fa-fw"></i>
+        <a href="/dashboard/"
+           class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw"></i>
           {{request.user.email | truncatechars:12 }} </a>
 
-        <a href="/" class="w3-bar-item w3-button w3-padding"><i class="fa fa-map-marker fa-fw"></i>
+        <a href="/"
+           class="w3-bar-item w3-button w3-padding"><i class="fa fa-map-marker fa-fw"></i>
           {{request.user.state}} </a>
 
-        <a href="/" class="w3-bar-item w3-button w3-padding"><i class="fa fa-flag fa-fw"></i> 
+        <a href="/"
+           class="w3-bar-item w3-button w3-padding"><i class="fa fa-flag fa-fw"></i> 
           {{request.user.country}} </a>
 
         <!-- <p style="font-weight: bolder;" class="w3-large w3-bar-item"> Transfer  <i class="fa fa-send-o"></i></p> -->
         <br>
 
         <a style="font-weight: bolder;text-decoration: none;font-family:Raleway;"
-          class="w3-large w3-bar-item" onclick="switchList()" {% block transfer %} href="/transfer"
-          {% endblock transfer %} class="w3-bar-item w3-button w3-padding w3-text-blue-gray"><i
-            class="fa fa-send fa-fw"></i> 
-          Transfer <i id="caret_" class="fa fa-caret-down fa-2x fa-fw w3-right"></i>  </a>
+           class="w3-large w3-bar-item"
+           onclick="switchList()"
+           {% block transfer %}
+           href="/transfer"
+           {% endblock transfer %}
+           class="w3-bar-item w3-button w3-padding w3-text-blue-gray"><i
+             class="fa fa-send fa-fw"></i> 
+          Transfer <i id="caret_"
+             class="fa fa-caret-down fa-2x fa-fw w3-right"></i>  </a>
 
-        <div style="display: none;" id="tlist"
-          class="w3-container w3-bar w3-margin-left w3-animate-right">
+        <div style="display: none;"
+             id="tlist"
+             class="w3-container w3-bar w3-margin-left w3-animate-right">
           <!-- <a style = 'color:#D88E2D' onclick="switchToLocal()" class="w3-bar-item w3-button "> Local
             Transfer
           </a>
           <a style = 'color:#D88E2D' onclick="switchToIntl()" class="w3-bar-item w3-button "> International
             Transfer </a> -->
-          <a style='color:#D88E2D' href="/history/" class="w3-bar-item w3-button w3-padding   ">
+          <a style='color:#D88E2D'
+             href="/history/"
+             class="w3-bar-item w3-button w3-padding   ">
             Transfer History </a>
         </div>
 
@@ -257,40 +284,53 @@
 
 
     <!-- Overlay effect when opening sidebar on small screens -->
-    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()"
-      style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+    <div class="w3-overlay w3-hide-large w3-animate-opacity"
+         onclick="w3_close()"
+         style="cursor:pointer"
+         title="close side menu"
+         id="myOverlay"></div>
     <!-- ---------- -->
 
     <div class="w3-main w3-row"
-      style="margin-left:300px;margin-top:40px;padding:10px 18px 10px 18px;">
+         style="margin-left:300px;margin-top:40px;padding:10px 18px 10px 18px;">
 
       <div class="main w3-col l12 s12 m12 w3-center  w3-round-medium">
 
-        <div style='width:100%;' class="top-container w3-border w3-padding ">
-          <form method='post' action="/search/">
+        <div style='width:100%;'
+             class="top-container w3-border w3-padding ">
+          <form method='post'
+                action="/search/">
             {% csrf_token %}
             <input class='w3-hide-small w3-hide-medium'
-              style='width:65%;margin-top:.5%;float:left;height:35px;border:1px solid transparent;border-radius:10px;padding:2%;background-color: rgba(0,0,0,0.1);'
-              type='text' placeholder='Search transaction history' name='query' />
-            <input type='submit' style='display:none;' value='submit'>
+                   style='width:65%;margin-top:.5%;float:left;height:35px;border:1px solid transparent;border-radius:10px;padding:2%;background-color: rgba(0,0,0,0.1);'
+                   type='text'
+                   placeholder='Search transaction history'
+                   name='query' />
+            <input type='submit'
+                   style='display:none;'
+                   value='submit'>
           </form>
 
           <div style='display:inline-block;'>
 
             <img style='display:inline-block;margin:auto;border:1px solid transparent;'
-              src='/static/banking/favicon.ico' height='38' width='38' class='w3-circle w3-margin'
-              alt='image'>
+                 src='/static/banking/favicon.ico'
+                 height='38'
+                 width='38'
+                 class='w3-circle w3-margin'
+                 alt='image'>
 
             <span
-              style='display:inline-block;text-align: center;font-weight: bold;text-transform: capitalize;'>
+                  style='display:inline-block;text-align: center;font-weight: bold;text-transform: capitalize;'>
               {{request.user.get_full_name}}</span>
 
             &nbsp; <span style='display:inline-block;cursor:pointer'
-              class='w3-tooltip hover-contain'>
+                  class='w3-tooltip hover-contain'>
               <i class='w3-medium fas fa-angle-down '>
                 &nbsp; &nbsp;<a
-                  style='text-decoration:none;color:rgb(235, 6, 94);font-family: Arial;'
-                  class='w3-animate-opacity w3-text w3-medium ' href='/log-out'> Log out </a>
+                   style='text-decoration:none;color:rgb(235, 6, 94);font-family: Arial;'
+                   class='w3-animate-opacity w3-text w3-medium '
+                   href='/log-out'> Log out </a>
               </i></span>
 
           </div>
@@ -298,19 +338,22 @@
         </div>
 
 
-        <div style='background-color:rgba(0,0,0,0.1);' class="bottom-container w3-padding">
+        <div style='background-color:rgba(0,0,0,0.1);'
+             class="bottom-container w3-padding">
           {% block main %}
           <h1
-            style='text-align:left;font-size:1.5rem;letter-spacing:-1px;font-weight:bold;font-family: Arial, Helvetica, sans-serif;'>
+              style='text-align:left;font-size:1.5rem;letter-spacing:-1px;font-weight:bold;font-family: Arial, Helvetica, sans-serif;'>
             Welcome back, {{request.user.firstname}} </h1>
           <small style='padding:5px;text-align:center;float:left;display:inline-block;'
-            class='w3-tiny w3-tag w3-card-4 w3-round'> Your banking dashbaord</small>
+                 class='w3-tiny w3-tag w3-card-4 w3-round'> Your banking dashbaord</small>
 
-          <div style='margin-top:4%;' class='w3-table-all w3-centered'>
+          <div style='margin-top:4%;'
+               class='w3-table-all w3-centered'>
 
             <div class='w3-third w3-center'
-              style='padding:4%;text-align:center;font-size: 1.25rem;font-weight: bolder;background-color:#D88E2D;'>
-              <i style='color:rgb(255, 255, 255);' class='far fa-2x fa-calendar'></i>
+                 style='padding:4%;text-align:center;font-size: 1.25rem;font-weight: bolder;background-color:#D88E2D;'>
+              <i style='color:rgb(255, 255, 255);'
+                 class='far fa-2x fa-calendar'></i>
               <small class='w3-small w3-opacity'> Today </small>
               <br>
               <span style='color:rgb(255, 255, 255)'> {% now "jS \o\f F" %} </span>
@@ -318,8 +361,9 @@
 
 
             <div class='w3-third w3-center'
-              style='padding:4%;text-align:center;font-size: 1.25rem;font-weight: bolder;background-color: #b87926;'>
-              <i style=' color:rgb(255, 255, 255)' class='fas fa-2x fa-credit-card'></i>
+                 style='padding:4%;text-align:center;font-size: 1.25rem;font-weight: bolder;background-color: #b87926;'>
+              <i style=' color:rgb(255, 255, 255)'
+                 class='fas fa-2x fa-credit-card'></i>
               <small class='w3-small w3-opacity'> Balance </small>
               <br>
               <span style='color:rgb(255, 255, 255)'>
@@ -327,8 +371,9 @@
             </div>
 
             <div class='w3-third w3-center'
-              style='padding:4%;text-align:center;font-size: 1.25rem;font-weight: bolder;background-color: #9c6721;'>
-              <i style=' color:rgb(255, 255, 255)' class='fas fa-2x fa-bank'></i>
+                 style='padding:4%;text-align:center;font-size: 1.25rem;font-weight: bolder;background-color: #9c6721;'>
+              <i style=' color:rgb(255, 255, 255)'
+                 class='fas fa-2x fa-bank'></i>
               <small class='w3-small w3-opacity'> Account Number </small>
               <br>
               <span style='color:rgb(255, 255, 255)'>
@@ -339,12 +384,17 @@
 
           </div>
 
-          <div style='clear:both;padding:5px;' class="w3-row-padding w3-margin">
-            <div style='height:600px' id='chart_div' class='w3-half'>
+          <div style='clear:both;padding:5px;'
+               class="w3-row-padding w3-margin">
+            <div style='height:600px'
+                 id='chart_div'
+                 class='w3-half'>
               <!-- Half1 {% lorem 4 p %} -->
             </div>
 
-            <div style='height: 600px;' id='chart_div1' class="w3-half">
+            <div style='height: 600px;'
+                 id='chart_div1'
+                 class="w3-half">
               <!-- Half 2 {% lorem 4 p %} -->
             </div>
 
@@ -358,7 +408,8 @@
           {% endblock main %}
 
           <br>
-          <div style='background-color: rgba(0, 0, 0, 0.212);' class="w3-container  w3-padding-32">
+          <div style='background-color: rgba(0, 0, 0, 0.212);'
+               class="w3-container  w3-padding-32">
             <div class="w3-row">
               <div class="w3-container w3-third">
                 <h5 class="w3-bottombar w3-border-green"> Bank Support </h5>
@@ -384,9 +435,10 @@
 
           <!-- Footer -->
           <footer style='background-color: rgba(0, 0, 0, 0.513);'
-            class="w3-container w3-padding-16 ">
+                  class="w3-container w3-padding-16 ">
             <h4> Reserve Bank of India </h4>
-            <p> &copy <a href="" target="_blank"> {% now "Y" %} </a></p>
+            <p> &copy <a href=""
+                 target="_blank"> {% now "Y" %} </a></p>
           </footer>
 
 

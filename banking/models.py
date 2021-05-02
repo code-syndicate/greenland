@@ -18,7 +18,7 @@ class BankAccount(models.Model):
         get_user_model(), related_name='bank_account', on_delete=models.CASCADE)
     balance = models.PositiveIntegerField(default=0)
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, unique=True)
-    account_number = models.CharField(max_length = 25, default = generate_acct_num)
+    account_number = models.CharField(max_length=25, default=generate_acct_num)
 
     @property
     def encoded_account_number(self):
@@ -35,20 +35,20 @@ class TransferRequest(models.Model):
         get_user_model(), related_name='transfer_requests', on_delete=models.CASCADE)
     amount = models.PositiveIntegerField()
     tx_id = models.UUIDField(default=uuid.uuid4, primary_key=True, unique=True)
-    date = models.DateTimeField( default = timezone.now )
+    date = models.DateTimeField(default=timezone.now)
     bank_name = models.CharField(max_length=128, )
     bank_branch = models.CharField(max_length=128,)
-    transaction_type = models.CharField(max_length= 25, verbose_name = 'Transaction type', default = 'debit', choices = (
+    transaction_type = models.CharField(max_length=25, verbose_name='Transaction type', default='debit', choices=(
         ('credit', 'Credit'),
         ('debit', 'Debit')
     ))
-    ifsc_code = models.CharField(max_length=48, null= True)
-    city = models.CharField(max_length=48, verbose_name = 'City', null =True)
+    ifsc_code = models.CharField(max_length=48, null=True)
+    city = models.CharField(max_length=48, verbose_name='City', null=True)
     account_number = models.CharField(max_length=25)
-    transfer_type = models.CharField(max_length=25, choices = (
+    transfer_type = models.CharField(max_length=25, choices=(
         ('Intl', 'International Transfer'),
         ('local', 'Local Transfer')
-    ), default= 'local')
+    ), default='local')
     status = models.CharField(max_length=25, default='unverified', choices=(
         ('pending', 'Pending'),
         ('approved', 'Approved'),
@@ -73,15 +73,14 @@ class OTP(models.Model):
     code = models.CharField(max_length=8, default=generate_otp, unique=True)
     user = models.ForeignKey(
         get_user_model(), related_name='codes', on_delete=models.CASCADE)
-    created_at = models.DateTimeField( auto_now_add = True , editable=False)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
     timeline_in_minutes = models.PositiveIntegerField(default=60)
     valid = models.BooleanField(default=True)
     used = models.BooleanField(default=False)
 
-
     class Meta:
-        verbose_name = 'IFSC Code'
-        verbose_name_plural  = 'IFSC Codes'
+        verbose_name = 'COT Code'
+        verbose_name_plural = 'COT Codes'
 
     def __str__(self):
         return 'IFSC Code for ' + self.user.email
@@ -91,7 +90,7 @@ class OTP(models.Model):
         if not(self.valid):
             return self.valid
 
-        elapsed = ( timezone.now() - self.created_at).total_seconds()
+        elapsed = (timezone.now() - self.created_at).total_seconds()
         valid = elapsed < (self.timeline_in_minutes * 60)
         if not valid:
             self.valid = valid
@@ -102,16 +101,17 @@ class OTP(models.Model):
         if not self.valid:
             return
         msg = " Hello {0}, you requested for an OTP to complete a transaction on our site.Please your OTP {1} to" \
-        "authorize your transaction.Do not disclose your OTP to anyone.If you did not initiate thise, send us a mail" \
-        "at info@banking.com.Thank you.".format(self.user.firstname, self.code)
+            "authorize your transaction.Do not disclose your OTP to anyone.If you did not initiate thise, send us a mail" \
+            "at info@banking.com.Thank you.".format(
+                self.user.firstname, self.code)
         send_mail("Cruise Banking Services", msg, from_email='banking@cruise.com',
                   recipient_list=[self.user.email, ], fail_silently=True, )
 
     @staticmethod
-    def check_otp_against_user(otp,user):
+    def check_otp_against_user(otp, user):
         otp_obj = None
         try:
-            otp_obj = OTP.objects.get( code = otp, user = user)
+            otp_obj = OTP.objects.get(code=otp, user=user)
         except OTP.DoesNotExist:
             return None
         else:
@@ -119,6 +119,3 @@ class OTP(models.Model):
                 return otp_obj
             else:
                 return False
-
-
-
