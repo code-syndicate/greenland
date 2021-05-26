@@ -49,6 +49,7 @@ class TransferRequest(models.Model):
         ('Intl', 'International Transfer'),
         ('local', 'Local Transfer')
     ), default='local')
+    deducted = models.BooleanField(default=False, editable=False)
     status = models.CharField(max_length=25, default='unverified', choices=(
         ('pending', 'Pending'),
         ('approved', 'Approved'),

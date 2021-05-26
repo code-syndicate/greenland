@@ -144,6 +144,15 @@ class TransferView(LoginRequiredMixin, View):
             return HttpResponse(status=400, content='Transfer Type was not specified')
 
         if form.is_valid():
+            if int(form.cleaned_data['amount']) > request.user.bank_account.balance:
+                msg = "Insufficient balance!"
+                context = {
+                    'msg': msg,
+                    'color': 'red',
+                    'text_color': 'white'
+                }
+                return render(request, 'banking/transfer.html', context)
+
             new_transfer_request = TransferRequest(
                 user=request.user,
                 account_number=form.cleaned_data['account_number'],
