@@ -193,7 +193,7 @@ d.style.display = "block"
                     }
 
                     if (formIsValid) {
-                        reply = confirm("Are you sure you wish to proceed with the transfer?",)
+                        reply = confirm("Confirm transfer",)
                         if (reply === false) { return; }
                         setTimeout(() => { document.getElementById("tForm").submit() }, 5000);
 
