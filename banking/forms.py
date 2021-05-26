@@ -6,7 +6,7 @@ class LocalTransferForm(Form):
     # account_type = forms.CharField(
     # max_length=10, min_length=4, strip=True, required=True, label='Account Type')
     account_number = forms.IntegerField(
-        min_value=100000000, required=True, label='Account Number')
+        min_value=10000000, required=True, label='Account Number')
     amount = forms.IntegerField(
         min_value=10, required=True, label='Amount')
 
