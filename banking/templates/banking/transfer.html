@@ -131,7 +131,7 @@ d.style.display = "block"
                        class="w3-padding w3-border w3-border-dark-gray w3-large"
                        name="ifsc_code"
                        type="text"
-                       minlength="4"
+                       minlength="3"
                        placeholder="IFSC Code"
                        required>
             </div>
@@ -186,7 +186,7 @@ d.style.display = "block"
                     let ifsc = document.getElementById('f').value;
 
 
-                    if (acct_name.length < 3 || bank_name.length < 3 || bank_branch.length < 3 || amount.length < 2 || ifsc.length < 3) {
+                    if (acct_name.length < 3 || bank_name.length < 3 || bank_branch.length < 3 || amount.length < 2 || ifsc.length < 2) {
                         formIsValid = false;
                         alert("Please fill the form correctly")
                         return;
