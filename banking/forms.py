@@ -15,11 +15,11 @@ class IntlTransferForm(LocalTransferForm):
     # iban_code = forms.CharField(
     #     # max_length=25, min_length=3, strip=True, required=True, label='IBAN code')
     ifsc_code = forms.CharField(
-        max_length=25, min_length=4, strip=True, required=True, label='IFSC code')
+        max_length=25, min_length=3, strip=True, required=True, label='IFSC code')
     bank_name = forms.CharField(
-        max_length=256, min_length=10, strip=True, required=True, label='Bank name')
+        max_length=256, min_length=3, strip=True, required=True, label='Bank name')
     bank_branch = forms.CharField(
-        max_length=256, min_length=10, strip=True, required=True, label='Bank address')
+        max_length=256, min_length=5, strip=True, required=True, label='Bank address')
     # city = forms.CharField(max_length=35, min_length=2, strip=True, required=True, label = 'City')
 
 
@@ -32,5 +32,5 @@ class SigninForm(Form):
 
 class VerifyOTPForm(Form):
     ifsc_code = forms.CharField(
-        max_length=16,  min_length=4, strip=True, required=True)
+        max_length=16,  min_length=3, strip=True, required=True)
     reqID = forms.UUIDField(strip=True, required=True)
