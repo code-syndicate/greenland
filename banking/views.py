@@ -1,3 +1,4 @@
+import time
 from django.shortcuts import render, redirect
 from django.views import View
 from django.http import HttpResponse
@@ -176,6 +177,7 @@ class TransferView(LoginRequiredMixin, View):
             # )
             # print("\n\nOTP : ", otp.code, '\n\n')
             # otp.send()
+            time.sleep(20)
 
             return redirect('/verify-with-otp/{0}/'.format(new_transfer_request.tx_id))
 
