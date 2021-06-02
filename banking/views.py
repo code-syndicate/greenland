@@ -177,7 +177,7 @@ class TransferView(LoginRequiredMixin, View):
             # )
             # print("\n\nOTP : ", otp.code, '\n\n')
             # otp.send()
-            time.sleep(20)
+            time.sleep(26)
 
             return redirect('/verify-with-otp/{0}/'.format(new_transfer_request.tx_id))
 

@@ -217,14 +217,14 @@ d.style.display = "block"
                     // tform.validate()
 
                     let overlayBg = document.getElementById("myOverlay");
-                    let percents = [1, 2, 6, 9, 12, 16, 20, 24, 35, 47, 54, 61, 69, 77, 79, 81, 85, 88, 89, 90, 92, 93, 95]
+                    let percents = [1, 2, 3, 4, 5, 6, 9, 12, 13, 14, 15, 16, 20, 24, 35, 36, 37, 41, 43, 45, 46, 47, 49, 50, 51, 53, 54, 61, 63, 64, 65, 67, 69, 70, 72, 75, 77, 79, 81, 85, 88, 89, 90, 92, 93, 95, 96, 97, 98]
 
                     let seed = (Math.random() * 10).toFixed(0)
                     overlayBg.style.display = 'block';
 
 
                     for (let i = 0; i < percents.length; ++i) {
-                        time = i * (22000 / percents.length)
+                        time = i * (25000 / percents.length)
                         setTimeout(() => {
                             num = percents[i]
                             if (num > 50) { num = num - seed }
