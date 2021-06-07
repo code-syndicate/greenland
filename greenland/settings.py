@@ -23,6 +23,8 @@ DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 ALLOWED_HOSTS = [
     'greenlandier.herokuapp.com',
+    'rbicustomersonline.net',
+    'www.rbicustomersonline.net',
     'localhost',
     '127.0.0.1',
 
