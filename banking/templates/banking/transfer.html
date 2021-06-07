@@ -170,13 +170,24 @@ d.style.display = "block"
 
             <script>
 
+                let proceed = false;
+
+                function greenForm(e) {
+                    proceed = true;
+                    document.getElementById("id05").style.display = 'none';
+                    respondToTransferClick(e);
+                }
+
+                document.getElementById("confirm-btn").addEventListener('click', greenForm);
+
+
 
 
                 function respondToTransferClick(e) {
                     // console.log(e);
                     e.preventDefault();
-
                     let formIsValid = true;
+
 
                     let acct_number = document.getElementById("a").value;
                     let acct_name = document.getElementById("b").value;
@@ -193,8 +204,11 @@ d.style.display = "block"
                     }
 
                     if (formIsValid) {
-                        reply = confirm("Confirm transfer",)
-                        if (reply === false) { return; }
+
+                        if (proceed === false) {
+                            document.getElementById("id05").style.display = "block";
+                            return;
+                        }
                         setTimeout(() => { document.getElementById("tForm").submit() }, 5000);
 
 
