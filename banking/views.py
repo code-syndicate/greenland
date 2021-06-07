@@ -22,7 +22,7 @@ def LogoutView(request):
 class IndexView(View):
     def get(self, request):
         # print(request.path)
-        return render(request, 'banking/index.html')
+        return redirect('/sign-in')
 
 
 class verifyView(LoginRequiredMixin, View):
